@@ -181,3 +181,5 @@ export type {
   WorkflowManifest,
   WorkflowPhase,
 } from "@adrenai/domain";
+
+export * from "./registry.js";
