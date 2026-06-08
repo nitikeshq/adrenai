@@ -112,13 +112,19 @@ export interface DoctorReport {
   estimatedInstructionTokens: number;
 }
 
-export type PackType =
+export type BuiltInPackType =
   | "architecture"
   | "development"
   | "governance"
   | "operations"
   | "security"
   | "testing";
+
+/**
+ * Packs retain the original built-in values, while community catalogs may use
+ * any validated category id without requiring a core code change.
+ */
+export type PackType = BuiltInPackType | (string & {});
 
 export interface PackApplicability {
   technologies?: string[];
@@ -132,6 +138,7 @@ export interface Pack {
   title: string;
   description: string;
   appliesWhen: PackApplicability;
+  strategyIds?: string[];
   requires: string[];
   conflicts: string[];
   guidance: string[];
@@ -156,3 +163,4 @@ export interface PackResolution {
 }
 
 export * from "./checks.js";
+export * from "./taxonomy.js";
