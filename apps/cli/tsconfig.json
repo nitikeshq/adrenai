@@ -9,6 +9,7 @@
   "references": [
     { "path": "../../packages/application" },
     { "path": "../../packages/domain" },
-    { "path": "../../packages/infrastructure" }
+    { "path": "../../packages/infrastructure" },
+    { "path": "../../packages/sdk" }
   ]
 }

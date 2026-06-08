@@ -19,7 +19,20 @@ describe("parseArguments", () => {
       session: undefined,
       action: undefined,
       gates: undefined,
+      source: undefined,
+      registry: undefined,
+      next: undefined,
+      capability: undefined,
+      content: undefined,
     });
+  });
+
+  it("parses safe AI preview and registry command inputs", () => {
+    expect(parseArguments(["ai-preview", "--capability=summarize", "--content=public text"]))
+      .toMatchObject({ command: "ai-preview", capability: "summarize", content: "public text" });
+    expect(parseArguments(["registry-update-preview", "--registry=current.json", "--next=next.json"]))
+      .toMatchObject({ command: "registry-update-preview", registry: "current.json", next: "next.json" });
+    expect(() => parseArguments(["ai-preview", "--capability=execute"])).toThrow("Unsupported AI capability");
   });
 
   it("parses platform catalog and session selectors", () => {
@@ -32,7 +45,7 @@ describe("parseArguments", () => {
   it("rejects unknown commands, options, and misplaced apply options", () => {
     expect(() => parseArguments(["unknown"])).toThrow("Unknown command");
     expect(() => parseArguments(["inspect", "--unknown"])).toThrow("Unknown option");
-    expect(() => parseArguments(["doctor", "--write"])).toThrow("--write is only supported");
+    expect(() => parseArguments(["doctor", "--write"])).toThrow("--write is not supported");
     expect(() => parseArguments(["doctor", "--run"])).toThrow("--run is only supported");
     expect(() => parseArguments(["doctor", "--agents=codex"])).toThrow(
       "--agents is only supported",

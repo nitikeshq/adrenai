@@ -18,6 +18,7 @@
   "dependencies": {
     "@adrenai/application": "workspace:*",
     "@adrenai/domain": "workspace:*",
-    "@adrenai/infrastructure": "workspace:*"
+    "@adrenai/infrastructure": "workspace:*",
+    "@adrenai/sdk": "workspace:*"
   }
 }

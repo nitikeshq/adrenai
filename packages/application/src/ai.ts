@@ -20,37 +20,39 @@ export interface AiContentHasher {
 const DETECTION_RULES: Array<{
   provider: Omit<AiProviderDescriptor, "detectionEvidence">;
   environmentKeys: string[];
-  filePatterns: RegExp[];
 }> = [
   {
     provider: { id: "openai", title: "OpenAI-compatible provider", capabilities: ["summarize", "gap-analysis", "custom-strategy"] },
     environmentKeys: ["OPENAI_API_KEY"],
-    filePatterns: [/(^|\/)\.codex\//i, /(^|\/)AGENTS\.md$/i],
   },
   {
     provider: { id: "anthropic", title: "Anthropic-compatible provider", capabilities: ["summarize", "gap-analysis", "custom-strategy"] },
     environmentKeys: ["ANTHROPIC_API_KEY"],
-    filePatterns: [/(^|\/)\.claude\//i, /(^|\/)CLAUDE\.md$/i],
-  },
-  {
-    provider: { id: "cursor", title: "Cursor local environment", capabilities: ["summarize", "gap-analysis"] },
-    environmentKeys: [],
-    filePatterns: [/(^|\/)\.cursor\//i, /(^|\/)\.cursorrules$/i],
   },
 ];
 
 export function detectAiProviderEnvironments(
   environmentKeys: string[],
-  repositoryFiles: string[],
 ): AiProviderDescriptor[] {
   const environment = new Set(environmentKeys);
-  return DETECTION_RULES.flatMap(({ provider, environmentKeys: keys, filePatterns }) => {
+  return DETECTION_RULES.flatMap(({ provider, environmentKeys: keys }) => {
     const evidence = [
       ...keys.filter((key) => environment.has(key)).map((key) => `environment variable present: ${key}`),
-      ...repositoryFiles.filter((path) => filePatterns.some((pattern) => pattern.test(path))).map((path) => `configuration indicator: ${path}`),
     ];
     return evidence.length ? [{ ...provider, detectionEvidence: evidence }] : [];
   });
+}
+
+export function detectInstalledAgentEnvironments(repositoryFiles: string[]): string[] {
+  const rules = [
+    ["codex", /(^|\/)(?:\.codex\/|AGENTS\.md$)/i],
+    ["claude-code", /(^|\/)(?:\.claude\/|CLAUDE\.md$)/i],
+    ["cursor", /(^|\/)(?:\.cursor\/|\.cursorrules$)/i],
+    ["github-copilot", /(^|\/)\.github\/copilot-instructions\.md$/i],
+    ["kiro", /(^|\/)\.kiro\//i],
+    ["gemini", /(^|\/)GEMINI\.md$/i],
+  ] as const;
+  return rules.filter(([, pattern]) => repositoryFiles.some((path) => pattern.test(path))).map(([id]) => id);
 }
 
 export function redactAiContent(content: string): { content: string; redactions: string[] } {
