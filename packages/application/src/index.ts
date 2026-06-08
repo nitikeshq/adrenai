@@ -1053,5 +1053,6 @@ export function resolveRecommendedPacks(
 export * from "./checks.js";
 export * from "./inspection-hardening.js";
 export * from "./selection.js";
+export * from "./session.js";
 export * from "./synthesis.js";
 export * from "./sync.js";
