@@ -36,6 +36,7 @@ jobs:
       - run: pnpm secret-scan
       - run: pnpm build
       - run: node scripts/validate-release.mjs
+      - run: node scripts/release-tag-test.mjs
       - run: node dist/main.js packs
       - run: node dist/main.js inspect examples/fixtures/typescript-codex --json
       - run: node scripts/smoke-test.mjs

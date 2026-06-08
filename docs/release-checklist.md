@@ -1,5 +1,32 @@
 # Release Checklist
 
+## Trusted Publishing Setup
+
+Before pushing the first version tag, configure npm trusted publishing for the
+`adrenai` package with:
+
+- Repository: `nitikeshq/adrenai`
+- Workflow: `.github/workflows/release-prepare.yml`
+- Environment: leave empty unless the workflow is updated to use one
+
+No long-lived `NPM_TOKEN` is required. Tagged workflow runs request a short-lived
+identity token, publish with provenance, and attach the prepared tarball to a
+GitHub Release.
+
+Run the preparation workflow manually before the first publish. Manual runs
+build and upload the package artifact but never publish it.
+
+For a release, update `package.json` and `CHANGELOG.md`, merge the reviewed
+change, then push the matching version tag:
+
+```bash
+node scripts/verify-release-tag.mjs v0.1.0
+git tag v0.1.0
+git push origin v0.1.0
+```
+
+The workflow stops before publishing when the tag and package version differ.
+
 Use this checklist for every public AdrenAI release.
 
 ## Scope and behavior
