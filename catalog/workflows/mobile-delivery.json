@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "adrenai/mobile-delivery",
+  "version": "1.0.0",
+  "title": "Mobile Delivery",
+  "phases": [
+    { "id": "platform", "title": "Approve platform and delivery strategy", "dependsOn": [], "inputs": ["product-brief"], "outputs": ["approved-mobile-plan"], "gateIds": [], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "implement", "title": "Implement mobile change", "dependsOn": ["platform"], "inputs": ["approved-mobile-plan"], "outputs": ["mobile-build"], "gateIds": ["configured-typecheck"], "approvalRequired": false, "optional": false, "retryLimit": 2 },
+    { "id": "device-validation", "title": "Validate on representative devices", "dependsOn": ["implement"], "inputs": ["mobile-build"], "outputs": ["device-evidence"], "gateIds": ["configured-tests"], "approvalRequired": false, "optional": false, "retryLimit": 2 },
+    { "id": "release-review", "title": "Review accessibility, privacy, and store release", "dependsOn": ["device-validation"], "inputs": ["device-evidence"], "outputs": ["mobile-release"], "gateIds": ["secret-scan"], "approvalRequired": true, "optional": false, "retryLimit": 1 }
+  ]
+}
