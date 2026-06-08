@@ -1,0 +1,40 @@
+.install-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 50px;
+}
+
+.install-grid article {
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.install-grid b {
+  color: var(--lime);
+  font: 11px monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.install-grid h3 {
+  margin: 18px 0 12px;
+  font-size: 22px;
+}
+
+.install-grid code {
+  display: block;
+  overflow: auto;
+  padding-bottom: 4px;
+  color: var(--violet);
+  white-space: nowrap;
+}
+
+@media (max-width: 850px) {
+  .install-grid {
+    grid-template-columns: 1fr;
+  }
+}
