@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1, "id": "adrenai/spreadsheet-delivery", "version": "1.0.0", "title": "Spreadsheet Delivery",
+  "phases": [
+    { "id": "plan", "title": "Approve purpose, data contract, template, and constraints", "dependsOn": [], "inputs": ["spreadsheet-brief", "template-selection"], "outputs": ["approved-plan"], "gateIds": ["template-review", "brand-review", "data-contract-review", "privacy-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "model", "title": "Create format-neutral workbook model", "dependsOn": ["plan"], "inputs": ["approved-plan"], "outputs": ["spreadsheet-plan"], "gateIds": ["data-validation-review"], "approvalRequired": false, "optional": false, "retryLimit": 2 },
+    { "id": "review", "title": "Review formulas, reconciliation, and accessibility", "dependsOn": ["model"], "inputs": ["spreadsheet-plan"], "outputs": ["reviewed-spreadsheet-plan"], "gateIds": ["formula-audit", "reconciliation-review", "accessibility-review"], "approvalRequired": true, "optional": false, "retryLimit": 2 },
+    { "id": "export", "title": "Approve adapter export", "dependsOn": ["review"], "inputs": ["reviewed-spreadsheet-plan"], "outputs": ["spreadsheet-export"], "gateIds": ["export-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 }
+  ]
+}

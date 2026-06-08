@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "spreadsheet",
+  "title": "Budget Model",
+  "templateId": "spreadsheet/budget-model",
+  "brandTokens": { "primary": "#123456" },
+  "sections": [{ "id": "inputs", "title": "Validated inputs", "content": ["Monthly amount and category."] }],
+  "accessibilityRequirements": ["accessible colors"],
+  "validationRules": ["data validation", "formula audit"],
+  "reviewGateIds": ["data-validation-review", "formula-audit", "accessibility-review"],
+  "exportTargets": [{ "format": "xlsx", "purpose": "editable model" }, { "format": "pdf", "purpose": "review snapshot" }]
+}
