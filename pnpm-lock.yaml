@@ -78,7 +78,14 @@ importers:
         specifier: workspace:*
         version: link:../domain
 
-  packages/sdk: {}
+  packages/sdk:
+    dependencies:
+      '@adrenai/domain':
+        specifier: workspace:*
+        version: link:../domain
+      '@adrenai/schemas':
+        specifier: workspace:*
+        version: link:../schemas
 
 packages:
 
