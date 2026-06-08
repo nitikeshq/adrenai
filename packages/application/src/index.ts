@@ -1054,6 +1054,7 @@ export * from "./checks.js";
 export * from "./ai.js";
 export * from "./api.js";
 export * from "./inspection-hardening.js";
+export * from "./platform-catalog.js";
 export * from "./selection.js";
 export * from "./session.js";
 export * from "./synthesis.js";

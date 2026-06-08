@@ -14,7 +14,19 @@ describe("parseArguments", () => {
       help: false,
       version: false,
       agents: ["codex", "cursor"],
+      category: undefined,
+      workflow: undefined,
+      session: undefined,
+      action: undefined,
+      gates: undefined,
     });
+  });
+
+  it("parses platform catalog and session selectors", () => {
+    expect(parseArguments(["session-action", ".", "--session=launch", "--action=resume", "--gates=test,lint", "--json"]))
+      .toMatchObject({ command: "session-action", session: "launch", action: "resume", gates: ["test", "lint"], json: true });
+    expect(parseArguments(["strategies", "--category=design/visual-system"]))
+      .toMatchObject({ command: "strategies", category: "design/visual-system" });
   });
 
   it("rejects unknown commands, options, and misplaced apply options", () => {

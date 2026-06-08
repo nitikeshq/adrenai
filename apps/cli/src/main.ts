@@ -12,13 +12,19 @@ import {
   generateManagedSetup,
   inspectRepository,
   loadPackCatalog,
+  loadPlatformCatalog,
+  resolveCatalogPolicies,
+  createSession,
+  diagnoseSessionAlignment,
+  hashSessionContext,
+  transitionSession,
   planQualityGates,
   planSynchronization,
   recommendRepository,
   resolveRecommendedPacks,
   validateLockedConfiguration,
 } from "@adrenai/application";
-import type { DoctorReport, RepositoryInspection, RepositoryRecommendation } from "@adrenai/domain";
+import { planWorkflow, type DoctorReport, type RepositoryInspection, type RepositoryRecommendation, type SessionManifest } from "@adrenai/domain";
 import {
   applyArtifacts,
   NodeRepositoryFileSystem,
@@ -53,6 +59,12 @@ Usage:
   adrenai apply [path] [--write] [--agents=codex,claude-code,cursor]
   adrenai doctor [path] [--json]
   adrenai packs [--json]
+  adrenai strategies [--category=design/visual-system] [--json]
+  adrenai workflows [--json]
+  adrenai workflow-plan [--workflow=design/interface-delivery] [--category=design/visual-system] [--json]
+  adrenai session-start [path] --workflow=design/interface-delivery --session=my-session [--write] [--json]
+  adrenai session-status [path] --session=my-session [--json]
+  adrenai session-action [path] --session=my-session --action=pause|resume|handoff|complete [--write] [--json]
   adrenai drift [path] [--json]
   adrenai validate [path] [--json]
   adrenai sync [path] [--write] [--agents=codex,claude-code,cursor]
@@ -85,12 +97,89 @@ async function main(): Promise<void> {
   if (!catalogRoot) {
     throw new Error("Built-in pack catalog could not be located.");
   }
+  const platformRoot = resolve(catalogRoot, "..");
+  const loadPlatform = () => loadPlatformCatalog(platformRoot, fileSystem);
   if (command === "packs") {
     const catalog = await loadPackCatalog(catalogRoot, fileSystem);
     console.log(parsed.json ? JSON.stringify(catalog, null, 2) : formatCatalog(catalog));
     if (catalog.diagnostics.some(({ severity }) => severity === "error")) {
       process.exitCode = 1;
     }
+    return;
+  }
+  if (command === "strategies") {
+    const catalog = await loadPlatform();
+    const strategies = catalog.strategies.filter(({ categoryId }) => !parsed.category || categoryId === parsed.category);
+    const output = { category: parsed.category, strategies, diagnostics: catalog.diagnostics };
+    console.log(parsed.json ? JSON.stringify(output, null, 2) : strategies.map(({ id, title, categoryId }) => `${id} | ${categoryId} | ${title}`).join("\n"));
+    if (catalog.diagnostics.some(({ severity }) => severity === "error")) process.exitCode = 1;
+    return;
+  }
+  if (command === "workflows") {
+    const catalog = await loadPlatform();
+    console.log(parsed.json ? JSON.stringify(catalog.workflows, null, 2) : catalog.workflows.map(({ id, title }) => `${id} | ${title}`).join("\n"));
+    if (catalog.diagnostics.some(({ severity }) => severity === "error")) process.exitCode = 1;
+    return;
+  }
+  if (command === "workflow-plan") {
+    if (!parsed.workflow) throw new Error("workflow-plan requires --workflow=<id>.");
+    const catalog = await loadPlatform();
+    const workflow = catalog.workflows.find(({ id }) => id === parsed.workflow);
+    if (!workflow) throw new Error(`Unknown workflow: ${parsed.workflow}`);
+    const policy = resolveCatalogPolicies(catalog, parsed.category);
+    const output = { workflow: planWorkflow(workflow), mandatoryPolicyGateIds: policy.mandatoryGateIds, policyDiagnostics: policy.diagnostics };
+    console.log(JSON.stringify(output, null, 2));
+    return;
+  }
+  if (["session-start", "session-status", "session-action"].includes(command)) {
+    if (!parsed.session) throw new Error(`${command} requires --session=<id>.`);
+    const relativePath = `.adrenai/sessions/${parsed.session}/session.json`;
+    if (command === "session-status") {
+      const manifest = JSON.parse(await fileSystem.readText(root, relativePath)) as SessionManifest;
+      const inspection = await inspectRepository(root, fileSystem);
+      const report = diagnoseSessionAlignment(manifest, {
+        workflowId: manifest.workflowId,
+        workflowVersion: manifest.workflowVersion,
+        currentPhaseId: manifest.currentPhaseId,
+        contextHash: hashSessionContext({ inspection, workflowId: manifest.workflowId, workflowVersion: manifest.workflowVersion, currentPhaseId: manifest.currentPhaseId }, hasher),
+      });
+      console.log(JSON.stringify({ manifest, report }, null, 2));
+      if (!report.aligned) process.exitCode = 1;
+      return;
+    }
+    if (command === "session-action") {
+      if (!parsed.action) throw new Error("session-action requires --action=pause|resume|handoff|complete.");
+      const manifest = JSON.parse(await fileSystem.readText(root, relativePath)) as SessionManifest;
+      const unknownGates = (parsed.gates ?? []).filter((gate) => !manifest.requiredGateIds.includes(gate));
+      if (unknownGates.length > 0) throw new Error(`Session does not require gate(s): ${unknownGates.join(", ")}.`);
+      const withGates = { ...manifest, completedGateIds: [...new Set([...manifest.completedGateIds, ...(parsed.gates ?? [])])].sort() };
+      const updated = transitionSession(withGates, parsed.action);
+      if (parsed.write) await fileSystem.writeText(root, relativePath, `${JSON.stringify(updated, null, 2)}\n`);
+      console.log(JSON.stringify({ preview: !parsed.write, manifest: updated }, null, 2));
+      return;
+    }
+    if (!parsed.workflow) throw new Error("session-start requires --workflow=<id>.");
+    const catalog = await loadPlatform();
+    const workflow = catalog.workflows.find(({ id }) => id === parsed.workflow);
+    if (!workflow) throw new Error(`Unknown workflow: ${parsed.workflow}`);
+    const inspection = await inspectRepository(root, fileSystem);
+    const policy = resolveCatalogPolicies(catalog, parsed.category);
+    const firstPhaseId = planWorkflow(workflow).orderedPhaseIds[0];
+    if (!firstPhaseId) throw new Error(`Workflow ${workflow.id} has no active phases.`);
+    const generation = createSession({
+      id: parsed.session,
+      workflowId: workflow.id,
+      workflowVersion: workflow.version,
+      currentPhaseId: firstPhaseId,
+      decisions: {},
+      activeGuidance: policy.rules.map(({ statement }) => statement),
+      targetAgents: inspection.agents.length > 0 ? inspection.agents.map(({ agent }) => agent) : ["generic"],
+      requiredGateIds: [...new Set([...planWorkflow(workflow).gateIds, ...policy.mandatoryGateIds])],
+      completedGateIds: [],
+      context: { inspection, workflowId: workflow.id, workflowVersion: workflow.version, currentPhaseId: firstPhaseId },
+    }, hasher);
+    if (parsed.write) await applyArtifacts(root, generation.artifacts);
+    console.log(JSON.stringify({ preview: !parsed.write, generation }, null, 2));
     return;
   }
   if (command === "drift") {
@@ -146,6 +235,7 @@ async function main(): Promise<void> {
   }
   if (command === "tui") {
     const { recommendation, resolution } = await resolveSetup();
+    const platform = await loadPlatform();
     const artifacts = generateManagedSetup(inspection, recommendation, resolution, hasher);
     const recommendationById = new Map(
       recommendation.recommendations.map((item) => [item.id, item]),
@@ -163,7 +253,8 @@ async function main(): Promise<void> {
         `Agents: ${inspection.agents.map(({ agent }) => agent).join(", ") || "none"}`,
         `Profile: ${recommendation.profile}`,
       ],
-      strategies: resolution.resolved.map((pack) => ({
+      strategies: [
+        ...resolution.resolved.map((pack) => ({
         id: pack.id,
         title: pack.title,
         category: pack.type,
@@ -172,7 +263,13 @@ async function main(): Promise<void> {
         conflicts: pack.conflicts,
         prerequisites: pack.requires,
         outputs: pack.checks,
-      })),
+        })),
+        ...platform.strategies.map((strategy) => ({
+          id: strategy.id, title: strategy.title, category: strategy.categoryId,
+          confidence: "medium" as const, reasons: [strategy.description], conflicts: strategy.conflicts,
+          prerequisites: strategy.prerequisites, outputs: strategy.deliverableIds,
+        })),
+      ],
       questionLines: [
         "No material unresolved questions for the current deterministic recommendation.",
       ],
@@ -181,6 +278,7 @@ async function main(): Promise<void> {
         "2. Review generated guidance and required gates",
         "3. Approve effects through sync/apply",
         `Gates: ${resolution.resolved.flatMap(({ checks }) => checks).join(", ") || "none"}`,
+        `Available workflows: ${platform.workflows.map(({ id }) => id).join(", ")}`,
       ],
       fileChangeLines: artifacts.map(({ path }) => `create or synchronize ${path}`),
       diagnostics: resolution.diagnostics,

@@ -97,6 +97,34 @@ corepack pnpm dev packs --json
 
 Loads and validates all built-in packs. Catalog errors block generation.
 
+### Browse strategies and workflows
+
+```bash
+corepack pnpm dev strategies --category=design/visual-system
+corepack pnpm dev workflows
+corepack pnpm dev workflow-plan --workflow=design/interface-delivery --category=design/visual-system
+```
+
+These commands load and validate packaged taxonomy, workflow, and policy
+catalogs offline. Workflow previews include mandatory gates from applicable
+policy layers.
+
+### Manage aligned sessions
+
+```bash
+corepack pnpm dev session-start . --workflow=design/interface-delivery --session=design-review
+corepack pnpm dev session-start . --workflow=design/interface-delivery --session=design-review --write
+corepack pnpm dev session-status . --session=design-review
+corepack pnpm dev session-action . --session=design-review --action=pause --write
+corepack pnpm dev session-action . --session=design-review --action=resume --write
+corepack pnpm dev session-action . --session=design-review --action=complete --gates=accessibility-review,configured-browser-tests --write
+```
+
+Session creation and actions preview by default. `--write` persists the
+approved state under `.adrenai/sessions/`. Completion remains blocked until all
+required workflow and policy gates are recorded.
+`session-status` recomputes the repository context hash and reports drift.
+
 ### Detect managed-file drift
 
 ```bash

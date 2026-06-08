@@ -8,6 +8,12 @@ export type CommandName =
   | "inspect"
   | "onboard"
   | "packs"
+  | "strategies"
+  | "workflows"
+  | "workflow-plan"
+  | "session-start"
+  | "session-status"
+  | "session-action"
   | "recommend"
   | "sync"
   | "tui"
@@ -22,6 +28,11 @@ export interface ParsedArguments {
   help: boolean;
   version: boolean;
   agents?: AgentId[];
+  category?: string;
+  workflow?: string;
+  session?: string;
+  action?: "pause" | "resume" | "handoff" | "complete";
+  gates?: string[];
 }
 
 const COMMANDS = new Set<CommandName>([
@@ -32,6 +43,12 @@ const COMMANDS = new Set<CommandName>([
   "inspect",
   "onboard",
   "packs",
+  "strategies",
+  "workflows",
+  "workflow-plan",
+  "session-start",
+  "session-status",
+  "session-action",
   "recommend",
   "sync",
   "tui",
@@ -50,6 +67,11 @@ const AGENTS = new Set<AgentId>([
 export function parseArguments(args: string[]): ParsedArguments {
   const positional: string[] = [];
   let agents: AgentId[] | undefined;
+  let category: string | undefined;
+  let workflow: string | undefined;
+  let session: string | undefined;
+  let action: ParsedArguments["action"];
+  let gates: string[] | undefined;
 
   for (const argument of args) {
     if (!argument.startsWith("-")) {
@@ -65,6 +87,11 @@ export function parseArguments(args: string[]): ParsedArguments {
       argument !== "--version" &&
       argument !== "-v" &&
       !argument.startsWith("--agents=")
+      && !argument.startsWith("--category=")
+      && !argument.startsWith("--workflow=")
+      && !argument.startsWith("--session=")
+      && !argument.startsWith("--action=")
+      && !argument.startsWith("--gates=")
     ) {
       throw new Error(`Unknown option: ${argument}`);
     }
@@ -79,6 +106,15 @@ export function parseArguments(args: string[]): ParsedArguments {
       }
       agents = values as AgentId[];
     }
+    if (argument.startsWith("--category=")) category = argument.slice(11);
+    if (argument.startsWith("--workflow=")) workflow = argument.slice(11);
+    if (argument.startsWith("--session=")) session = argument.slice(10);
+    if (argument.startsWith("--action=")) {
+      const value = argument.slice(9);
+      if (!["pause", "resume", "handoff", "complete"].includes(value)) throw new Error(`Unsupported session action: ${value}`);
+      action = value as ParsedArguments["action"];
+    }
+    if (argument.startsWith("--gates=")) gates = [...new Set(argument.slice(8).split(",").filter(Boolean))];
   }
 
   const commandValue = positional[0];
@@ -91,8 +127,8 @@ export function parseArguments(args: string[]): ParsedArguments {
   if (agents && commandValue !== "apply" && commandValue !== "sync") {
     throw new Error("--agents is only supported by the apply and sync commands.");
   }
-  if (args.includes("--write") && commandValue !== "apply" && commandValue !== "sync") {
-    throw new Error("--write is only supported by the apply and sync commands.");
+  if (args.includes("--write") && !["apply", "sync", "session-start", "session-action"].includes(commandValue ?? "")) {
+    throw new Error("--write is only supported by apply, sync, session-start, and session-action.");
   }
   if (args.includes("--run") && commandValue !== "check") {
     throw new Error("--run is only supported by the check command.");
@@ -107,5 +143,10 @@ export function parseArguments(args: string[]): ParsedArguments {
     help: args.includes("--help") || args.includes("-h"),
     version: args.includes("--version") || args.includes("-v"),
     agents,
+    category,
+    workflow,
+    session,
+    action,
+    gates,
   };
 }
