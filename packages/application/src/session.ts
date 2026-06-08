@@ -29,7 +29,7 @@ function stableValue(value: unknown): unknown {
   return value;
 }
 
-function stableContextHash(value: unknown, hasher: SessionHasher): string {
+export function hashSessionContext(value: unknown, hasher: SessionHasher): string {
   return hasher.hash(JSON.stringify(stableValue(value)));
 }
 
@@ -64,7 +64,7 @@ export function createSession(
     targetAgents: [...new Set(input.targetAgents)],
     requiredGateIds: [...new Set(input.requiredGateIds)].sort(),
     completedGateIds: [...new Set(input.completedGateIds)].sort(),
-    contextHash: stableContextHash(input.context, hasher),
+    contextHash: hashSessionContext(input.context, hasher),
     status: "active",
   };
   const guidance = [
