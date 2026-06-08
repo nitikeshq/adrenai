@@ -84,13 +84,20 @@ Provider requests require a redacted preview, content-bound consent, and budget
 approval. Offline fallback remains available and provider SDKs are not default
 dependencies. See [optional AI providers and privacy](ai-provider-privacy.md).
 
+### Community supply-chain controls
+
+External skills and registry bundles remain quarantined data until checksum,
+signature, moderation, licensing, dependency-lock, conflict, and bundle
+validation pass. Imports are never executed directly. See
+[community registry and safe imports](community-registry.md).
+
 ## Known limitations
 
 - Markdown instruction parsing is diagnostic, not a security sandbox.
 - Filesystem races cannot be eliminated completely by a portable user-space CLI;
   synchronization rechecks hashes immediately before writing.
-- Remote/community pack installation is outside the MVP scope. Published npm
-  releases support provenance; built-in packs are reviewed and lockfile-hashed.
+- Remote registry transport is not included yet. Local registries and offline
+  bundles use the same supply-chain metadata and validation model.
 - JSON diagnostic output may gain additive fields between minor releases.
 
 ## Required policy for future execution

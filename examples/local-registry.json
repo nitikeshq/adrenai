@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "entries": [
+    {
+      "id": "example/community-bundle",
+      "version": "0.1.0",
+      "path": "community-bundle.json",
+      "license": "Apache-2.0",
+      "trust": "community-reviewed",
+      "moderation": "approved",
+      "compatibility": { "adrenai": ">=0.1.0" }
+    }
+  ]
+}
