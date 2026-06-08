@@ -27,12 +27,31 @@ deterministic, and does not require an AI provider.
 
 ## Install
 
+The public beta can be installed from source today:
+
 ```bash
-npm install -g adrenai
+git clone https://github.com/nitikeshq/adrenai.git
+cd adrenai
+corepack pnpm install
+corepack pnpm build
+node dist/main.js onboard .
+```
+
+After the corresponding `1.0.0` distribution channels are published:
+
+```bash
+npm install --global adrenai
 adrenai onboard .
+
+npx adrenai onboard .
+
+brew install nitikeshq/tap/adrenai
 ```
 
 Node.js 22 or newer is required.
+
+See the [installation guide](docs/installation.md) for updates, uninstalling,
+channel status, and verification.
 
 Running `adrenai` without a command starts a read-only onboarding summary for the
 current directory. It does not modify files or use AI credits.

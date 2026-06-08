@@ -4,6 +4,7 @@ import { resolve } from "node:path";
 const required = [
   "site/index.html",
   "site/styles.css",
+  "site/install.css",
   "site/script.js",
   "site/assets/favicon.svg",
   "site/assets/adrenai-product-hunt-cover.png",
@@ -11,7 +12,15 @@ const required = [
 await Promise.all(required.map((path) => access(resolve(path))));
 
 const html = await readFile(resolve("site/index.html"), "utf8");
-for (const text of ["One setup.", "Every coding agent.", "npx adrenai", "Offline-first"]) {
+for (const text of [
+  "One setup.",
+  "Every coding agent.",
+  "npx adrenai",
+  "npm install --global adrenai",
+  "brew install nitikeshq/tap/adrenai",
+  "Planned for 1.0.0",
+  "Offline-first",
+]) {
   if (!html.includes(text)) throw new Error(`Launch site is missing required copy: ${text}`);
 }
 if (!html.includes("https://github.com/nitikeshq/adrenai")) {

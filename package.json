@@ -3,6 +3,14 @@
   "version": "0.1.0",
   "private": false,
   "description": "Repository-aware configuration for AI coding agents.",
+  "homepage": "https://nitikeshq.github.io/adrenai/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nitikeshq/adrenai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nitikeshq/adrenai/issues"
+  },
   "license": "Apache-2.0",
   "type": "module",
   "bin": {
