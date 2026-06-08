@@ -3,7 +3,7 @@ import { createHash } from "node:crypto";
 import { spawn } from "node:child_process";
 import { dirname, isAbsolute, join, relative, resolve } from "node:path";
 import type { ContentHasher, RepositoryFileSystem } from "@adrenai/application";
-import type { ApplyResult, GeneratedArtifact } from "@adrenai/domain";
+import type { ApplyResult, GeneratedArtifact, WorkflowState } from "@adrenai/domain";
 import type {
   QualityGateExecution,
   QualityGatePlan,
@@ -96,6 +96,36 @@ export class Sha256ContentHasher implements ContentHasher {
   hash(content: string): string {
     return createHash("sha256").update(content, "utf8").digest("hex");
   }
+}
+
+function containsSecretKey(value: unknown): boolean {
+  if (Array.isArray(value)) return value.some(containsSecretKey);
+  if (typeof value !== "object" || value === null) return false;
+  return Object.entries(value).some(
+    ([key, child]) =>
+      /(secret|token|password|credential|api[_-]?key|auth)/i.test(key) ||
+      containsSecretKey(child),
+  );
+}
+
+export async function saveWorkflowState(root: string, state: WorkflowState): Promise<string> {
+  if (containsSecretKey(state)) throw new Error("Workflow state contains a secret-like key.");
+  if (!/^[a-z][a-z0-9-]*(?:\/[a-z][a-z0-9-]*)+$/.test(state.workflowId)) {
+    throw new Error("Workflow state id is invalid.");
+  }
+  const path = `.adrenai/workflows/${state.workflowId.replaceAll("/", "--")}.json`;
+  await new NodeRepositoryFileSystem().writeText(root, path, `${JSON.stringify(state, null, 2)}\n`);
+  return path;
+}
+
+export async function loadWorkflowState(root: string, workflowId: string): Promise<WorkflowState> {
+  if (!/^[a-z][a-z0-9-]*(?:\/[a-z][a-z0-9-]*)+$/.test(workflowId)) {
+    throw new Error("Workflow state id is invalid.");
+  }
+  const path = `.adrenai/workflows/${workflowId.replaceAll("/", "--")}.json`;
+  const state = JSON.parse(await new NodeRepositoryFileSystem().readText(root, path)) as WorkflowState;
+  if (containsSecretKey(state)) throw new Error("Workflow state contains a secret-like key.");
+  return state;
 }
 
 export async function applyArtifacts(

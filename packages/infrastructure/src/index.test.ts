@@ -2,7 +2,7 @@ import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promis
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { afterEach, describe, expect, it } from "vitest";
-import { applyArtifacts, runQualityGatePlans, Sha256ContentHasher } from "./index.js";
+import { applyArtifacts, loadWorkflowState, runQualityGatePlans, saveWorkflowState, Sha256ContentHasher } from "./index.js";
 
 const createdDirectories: string[] = [];
 
@@ -96,6 +96,27 @@ describe("Sha256ContentHasher", () => {
 
     expect(hasher.hash("content")).toBe(hasher.hash("content"));
     expect(hasher.hash("content")).not.toBe(hasher.hash("changed"));
+  });
+});
+
+describe("workflow state persistence", () => {
+  it("persists resumable state locally and rejects secret-like decisions", async () => {
+    const root = await temporaryRepository();
+    const state = {
+      schemaVersion: 1 as const,
+      workflowId: "adrenai/software-development",
+      workflowVersion: "1.0.0",
+      status: "paused" as const,
+      decisions: { audience: "developers" },
+      phases: [],
+    };
+    expect(await saveWorkflowState(root, state)).toBe(
+      ".adrenai/workflows/adrenai--software-development.json",
+    );
+    expect(await loadWorkflowState(root, state.workflowId)).toEqual(state);
+    await expect(
+      saveWorkflowState(root, { ...state, decisions: { apiKey: "unsafe" } }),
+    ).rejects.toThrow("secret-like");
   });
 });
 

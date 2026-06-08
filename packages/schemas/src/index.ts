@@ -10,6 +10,7 @@ import type {
 
 export { validateTaxonomyCatalog } from "./taxonomy.js";
 export { validatePolicyCatalog } from "./policy.js";
+export { validateWorkflowManifest } from "./workflow.js";
 
 const AGENTS = new Set<AgentId>([
   "claude-code",

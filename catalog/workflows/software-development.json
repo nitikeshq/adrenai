@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "adrenai/software-development",
+  "version": "1.0.0",
+  "title": "Software Development",
+  "phases": [
+    {
+      "id": "brief",
+      "title": "Approve implementation brief",
+      "dependsOn": [],
+      "inputs": ["repository-context"],
+      "outputs": ["approved-brief"],
+      "gateIds": [],
+      "approvalRequired": true,
+      "optional": false,
+      "retryLimit": 1
+    },
+    {
+      "id": "implement",
+      "title": "Implement approved change",
+      "dependsOn": ["brief"],
+      "inputs": ["approved-brief"],
+      "outputs": ["implementation"],
+      "gateIds": ["configured-typecheck"],
+      "approvalRequired": false,
+      "optional": false,
+      "retryLimit": 2
+    },
+    {
+      "id": "browser-review",
+      "title": "Review user-facing behavior",
+      "dependsOn": ["implement"],
+      "inputs": ["implementation"],
+      "outputs": ["browser-evidence"],
+      "gateIds": ["configured-browser-tests"],
+      "approvalRequired": false,
+      "optional": true,
+      "retryLimit": 1,
+      "when": { "decisionId": "user-facing", "equals": "yes" }
+    },
+    {
+      "id": "validate",
+      "title": "Validate and hand off",
+      "dependsOn": ["implement"],
+      "inputs": ["implementation"],
+      "outputs": ["handoff"],
+      "gateIds": ["configured-tests", "secret-scan"],
+      "approvalRequired": true,
+      "optional": false,
+      "retryLimit": 1
+    }
+  ]
+}
