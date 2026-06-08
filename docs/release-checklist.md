@@ -29,6 +29,9 @@ The workflow stops before publishing when the tag and package version differ.
 
 Use this checklist for every public AdrenAI release.
 
+The first stable release additionally requires every gate in the
+[`1.0.0` release plan](release-1.0-plan.md).
+
 ## Scope and behavior
 
 - [ ] Release scope and user-visible behavior are documented.
