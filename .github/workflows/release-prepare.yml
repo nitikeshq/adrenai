@@ -1,4 +1,4 @@
-name: Prepare Release
+name: Release
 
 on:
   workflow_dispatch:
@@ -24,6 +24,9 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
       - run: pnpm install --frozen-lockfile
+      - name: Verify release tag
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: node scripts/verify-release-tag.mjs "${GITHUB_REF_NAME}"
       - run: pnpm check
       - run: pnpm test
       - run: pnpm audit --audit-level high
@@ -36,3 +39,30 @@ jobs:
           path: artifacts/npm/*.tgz
           if-no-files-found: error
           retention-days: 14
+
+  publish:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - uses: actions/download-artifact@v4
+        with:
+          name: npm-packages-${{ github.sha }}
+          path: artifacts/npm
+      - name: Verify release tag
+        run: node scripts/verify-release-tag.mjs "${GITHUB_REF_NAME}"
+      - name: Publish package with npm trusted publishing
+        run: npm publish artifacts/npm/*.tgz --provenance --access public
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" artifacts/npm/*.tgz --generate-notes --verify-tag
