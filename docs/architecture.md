@@ -4,6 +4,9 @@ AdrenAI is a TypeScript modular monolith that inspects a repository, recommends 
 small set of guidance packs, and generates native configuration for supported AI
 coding agents.
 
+The target broader-platform flow, state model, approvals, trust boundaries, and
+category examples are defined in the [process blueprint](process-blueprint.md).
+
 ## Design goals
 
 - Work without an AI provider or network access.
