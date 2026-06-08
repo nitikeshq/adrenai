@@ -1,0 +1,2413 @@
+{
+  "schemaVersion": 1,
+  "namespace": "content",
+  "categories": [
+    {
+      "id": "content/technical-seo",
+      "version": "1.0.0",
+      "title": "Technical Seo",
+      "description": "Strategies for discoverability, rendering, indexation, performance, and technical search quality."
+    },
+    {
+      "id": "content/content-seo",
+      "version": "1.0.0",
+      "title": "Content Seo",
+      "description": "Strategies for useful, original, accessible, evidence-backed content aligned with search intent."
+    },
+    {
+      "id": "content/long-form-writing",
+      "version": "1.0.0",
+      "title": "Long Form Writing",
+      "description": "Strategies for researching, drafting, editing, and publishing books and other long-form work."
+    },
+    {
+      "id": "content/email-marketing",
+      "version": "1.0.0",
+      "title": "Email Marketing",
+      "description": "Strategies for permission-based, accessible, privacy-conscious, measurable email campaigns."
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "content/technical-seo-delivery",
+      "version": "1.0.0",
+      "title": "technical seo delivery",
+      "description": "Plan and deliver reviewable technical seo work."
+    },
+    {
+      "id": "content/content-seo-delivery",
+      "version": "1.0.0",
+      "title": "content seo delivery",
+      "description": "Plan and deliver reviewable content seo work."
+    },
+    {
+      "id": "content/long-form-writing-delivery",
+      "version": "1.0.0",
+      "title": "long form writing delivery",
+      "description": "Plan and deliver reviewable long form writing work."
+    },
+    {
+      "id": "content/email-marketing-delivery",
+      "version": "1.0.0",
+      "title": "email marketing delivery",
+      "description": "Plan and deliver reviewable email marketing work."
+    }
+  ],
+  "constraints": [
+    {
+      "id": "content/original-evidence-backed-work",
+      "version": "1.0.0",
+      "title": "Original Evidence-Backed Work",
+      "description": "Require original work, attributable sources, verified claims, accessibility, privacy, and applicable compliance."
+    }
+  ],
+  "deliverables": [
+    {
+      "id": "content/technical-seo-deliverable",
+      "version": "1.0.0",
+      "title": "technical seo deliverable",
+      "description": "A reviewed technical seo deliverable with recorded evidence."
+    },
+    {
+      "id": "content/content-seo-deliverable",
+      "version": "1.0.0",
+      "title": "content seo deliverable",
+      "description": "A reviewed content seo deliverable with recorded evidence."
+    },
+    {
+      "id": "content/long-form-writing-deliverable",
+      "version": "1.0.0",
+      "title": "long form writing deliverable",
+      "description": "A reviewed long form writing deliverable with recorded evidence."
+    },
+    {
+      "id": "content/email-marketing-deliverable",
+      "version": "1.0.0",
+      "title": "email marketing deliverable",
+      "description": "A reviewed email marketing deliverable with recorded evidence."
+    }
+  ],
+  "audiences": [],
+  "strategies": [
+    {
+      "id": "content/crawl-budget",
+      "version": "1.0.0",
+      "title": "Crawl Budget Review",
+      "description": "Apply crawl budget review as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use crawl budget review when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/robots-policy",
+      "version": "1.0.0",
+      "title": "Robots Policy",
+      "description": "Apply robots policy as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use robots policy when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/xml-sitemaps",
+      "version": "1.0.0",
+      "title": "XML Sitemaps",
+      "description": "Apply xml sitemaps as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use xml sitemaps when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/canonical-urls",
+      "version": "1.0.0",
+      "title": "Canonical URLs",
+      "description": "Apply canonical urls as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use canonical urls when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/redirect-hygiene",
+      "version": "1.0.0",
+      "title": "Redirect Hygiene",
+      "description": "Apply redirect hygiene as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use redirect hygiene when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/status-code-review",
+      "version": "1.0.0",
+      "title": "Status Code Review",
+      "description": "Apply status code review as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use status code review when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/structured-data",
+      "version": "1.0.0",
+      "title": "Structured Data",
+      "description": "Apply structured data as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use structured data when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/indexation-review",
+      "version": "1.0.0",
+      "title": "Indexation Review",
+      "description": "Apply indexation review as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use indexation review when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/internal-link-graph",
+      "version": "1.0.0",
+      "title": "Internal Link Graph",
+      "description": "Apply internal link graph as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use internal link graph when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/core-web-vitals",
+      "version": "1.0.0",
+      "title": "Core Web Vitals",
+      "description": "Apply core web vitals as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use core web vitals when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/mobile-rendering",
+      "version": "1.0.0",
+      "title": "Mobile Rendering",
+      "description": "Apply mobile rendering as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use mobile rendering when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/javascript-rendering",
+      "version": "1.0.0",
+      "title": "JavaScript Rendering",
+      "description": "Apply javascript rendering as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use javascript rendering when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/international-targeting",
+      "version": "1.0.0",
+      "title": "International Targeting",
+      "description": "Apply international targeting as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use international targeting when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/pagination-discovery",
+      "version": "1.0.0",
+      "title": "Pagination Discovery",
+      "description": "Apply pagination discovery as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use pagination discovery when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/duplicate-control",
+      "version": "1.0.0",
+      "title": "Duplicate Control",
+      "description": "Apply duplicate control as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use duplicate control when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/url-taxonomy",
+      "version": "1.0.0",
+      "title": "URL Taxonomy",
+      "description": "Apply url taxonomy as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use url taxonomy when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/log-file-analysis",
+      "version": "1.0.0",
+      "title": "Log File Analysis",
+      "description": "Apply log file analysis as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use log file analysis when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/site-migration-plan",
+      "version": "1.0.0",
+      "title": "Site Migration Plan",
+      "description": "Apply site migration plan as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use site migration plan when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "high"
+    },
+    {
+      "id": "content/technical-seo-monitoring",
+      "version": "1.0.0",
+      "title": "Technical SEO Monitoring",
+      "description": "Apply technical seo monitoring as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use technical seo monitoring when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/technical-seo-acceptance",
+      "version": "1.0.0",
+      "title": "Technical SEO Acceptance",
+      "description": "Apply technical seo acceptance as an explicit, reviewable part of the technical seo process.",
+      "categoryId": "content/technical-seo",
+      "capabilityIds": [
+        "content/technical-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/technical-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use technical seo acceptance when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/search-intent",
+      "version": "1.0.0",
+      "title": "Search Intent",
+      "description": "Apply search intent as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use search intent when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/topic-clusters",
+      "version": "1.0.0",
+      "title": "Topic Clusters",
+      "description": "Apply topic clusters as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use topic clusters when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/keyword-mapping",
+      "version": "1.0.0",
+      "title": "Keyword Mapping",
+      "description": "Apply keyword mapping as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use keyword mapping when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/content-gap-review",
+      "version": "1.0.0",
+      "title": "Content Gap Review",
+      "description": "Apply content gap review as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use content gap review when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/serp-evidence",
+      "version": "1.0.0",
+      "title": "SERP Evidence",
+      "description": "Apply serp evidence as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use serp evidence when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/audience-problems",
+      "version": "1.0.0",
+      "title": "Audience Problems",
+      "description": "Apply audience problems as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use audience problems when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/editorial-brief",
+      "version": "1.0.0",
+      "title": "Editorial Brief",
+      "description": "Apply editorial brief as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use editorial brief when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/answer-first-structure",
+      "version": "1.0.0",
+      "title": "Answer-First Structure",
+      "description": "Apply answer-first structure as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use answer-first structure when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/heading-hierarchy",
+      "version": "1.0.0",
+      "title": "Heading Hierarchy",
+      "description": "Apply heading hierarchy as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use heading hierarchy when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/descriptive-metadata",
+      "version": "1.0.0",
+      "title": "Descriptive Metadata",
+      "description": "Apply descriptive metadata as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use descriptive metadata when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/internal-link-plan",
+      "version": "1.0.0",
+      "title": "Internal Link Plan",
+      "description": "Apply internal link plan as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use internal link plan when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/source-citations",
+      "version": "1.0.0",
+      "title": "Source Citations",
+      "description": "Apply source citations as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use source citations when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/claim-verification",
+      "version": "1.0.0",
+      "title": "Claim Verification",
+      "description": "Apply claim verification as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use claim verification when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/original-contribution",
+      "version": "1.0.0",
+      "title": "Original Contribution",
+      "description": "Apply original contribution as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use original contribution when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/content-accessibility",
+      "version": "1.0.0",
+      "title": "Content Accessibility",
+      "description": "Apply content accessibility as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use content accessibility when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/content-refresh",
+      "version": "1.0.0",
+      "title": "Content Refresh",
+      "description": "Apply content refresh as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use content refresh when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/content-consolidation",
+      "version": "1.0.0",
+      "title": "Content Consolidation",
+      "description": "Apply content consolidation as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use content consolidation when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/content-pruning",
+      "version": "1.0.0",
+      "title": "Content Pruning",
+      "description": "Apply content pruning as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use content pruning when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/search-performance-measurement",
+      "version": "1.0.0",
+      "title": "Search Performance Measurement",
+      "description": "Apply search performance measurement as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use search performance measurement when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/content-seo-review",
+      "version": "1.0.0",
+      "title": "Content SEO Review",
+      "description": "Apply content seo review as an explicit, reviewable part of the content seo process.",
+      "categoryId": "content/content-seo",
+      "capabilityIds": [
+        "content/content-seo-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/content-seo-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use content seo review when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/reader-promise",
+      "version": "1.0.0",
+      "title": "Reader Promise",
+      "description": "Apply reader promise as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use reader promise when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/research-question",
+      "version": "1.0.0",
+      "title": "Research Question",
+      "description": "Apply research question as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use research question when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/source-ledger",
+      "version": "1.0.0",
+      "title": "Source Ledger",
+      "description": "Apply source ledger as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use source ledger when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/audience-definition",
+      "version": "1.0.0",
+      "title": "Audience Definition",
+      "description": "Apply audience definition as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use audience definition when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/argument-map",
+      "version": "1.0.0",
+      "title": "Argument Map",
+      "description": "Apply argument map as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use argument map when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/chapter-outline",
+      "version": "1.0.0",
+      "title": "Chapter Outline",
+      "description": "Apply chapter outline as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use chapter outline when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/narrative-arc",
+      "version": "1.0.0",
+      "title": "Narrative Arc",
+      "description": "Apply narrative arc as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use narrative arc when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/example-plan",
+      "version": "1.0.0",
+      "title": "Example Plan",
+      "description": "Apply example plan as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use example plan when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/drafting-sprints",
+      "version": "1.0.0",
+      "title": "Drafting Sprints",
+      "description": "Apply drafting sprints as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use drafting sprints when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/voice-guide",
+      "version": "1.0.0",
+      "title": "Voice Guide",
+      "description": "Apply voice guide as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use voice guide when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/terminology-guide",
+      "version": "1.0.0",
+      "title": "Terminology Guide",
+      "description": "Apply terminology guide as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use terminology guide when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/developmental-edit",
+      "version": "1.0.0",
+      "title": "Developmental Edit",
+      "description": "Apply developmental edit as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use developmental edit when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/structural-edit",
+      "version": "1.0.0",
+      "title": "Structural Edit",
+      "description": "Apply structural edit as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use structural edit when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/line-edit",
+      "version": "1.0.0",
+      "title": "Line Edit",
+      "description": "Apply line edit as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use line edit when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/copy-edit",
+      "version": "1.0.0",
+      "title": "Copy Edit",
+      "description": "Apply copy edit as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use copy edit when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/fact-check",
+      "version": "1.0.0",
+      "title": "Fact Check",
+      "description": "Apply fact check as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use fact check when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/citation-audit",
+      "version": "1.0.0",
+      "title": "Citation Audit",
+      "description": "Apply citation audit as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use citation audit when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/originality-review",
+      "version": "1.0.0",
+      "title": "Originality Review",
+      "description": "Apply originality review as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use originality review when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/accessible-language",
+      "version": "1.0.0",
+      "title": "Accessible Language",
+      "description": "Apply accessible language as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use accessible language when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/publication-readiness",
+      "version": "1.0.0",
+      "title": "Publication Readiness",
+      "description": "Apply publication readiness as an explicit, reviewable part of the long form writing process.",
+      "categoryId": "content/long-form-writing",
+      "capabilityIds": [
+        "content/long-form-writing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/long-form-writing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use publication readiness when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/permission-first-list",
+      "version": "1.0.0",
+      "title": "Permission-First List",
+      "description": "Apply permission-first list as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use permission-first list when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/audience-segmentation",
+      "version": "1.0.0",
+      "title": "Audience Segmentation",
+      "description": "Apply audience segmentation as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use audience segmentation when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/campaign-objective",
+      "version": "1.0.0",
+      "title": "Campaign Objective",
+      "description": "Apply campaign objective as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use campaign objective when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/value-proposition",
+      "version": "1.0.0",
+      "title": "Value Proposition",
+      "description": "Apply value proposition as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use value proposition when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/subject-line-review",
+      "version": "1.0.0",
+      "title": "Subject Line Review",
+      "description": "Apply subject line review as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use subject line review when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/preview-text",
+      "version": "1.0.0",
+      "title": "Preview Text",
+      "description": "Apply preview text as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use preview text when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/single-primary-action",
+      "version": "1.0.0",
+      "title": "Single Primary Action",
+      "description": "Apply single primary action as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use single primary action when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/responsive-email",
+      "version": "1.0.0",
+      "title": "Responsive Email",
+      "description": "Apply responsive email as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use responsive email when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/plain-text-alternative",
+      "version": "1.0.0",
+      "title": "Plain-Text Alternative",
+      "description": "Apply plain-text alternative as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use plain-text alternative when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/email-accessibility",
+      "version": "1.0.0",
+      "title": "Email Accessibility",
+      "description": "Apply email accessibility as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use email accessibility when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/personalization-boundaries",
+      "version": "1.0.0",
+      "title": "Personalization Boundaries",
+      "description": "Apply personalization boundaries as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use personalization boundaries when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "high"
+    },
+    {
+      "id": "content/privacy-minimization",
+      "version": "1.0.0",
+      "title": "Privacy Minimization",
+      "description": "Apply privacy minimization as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use privacy minimization when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/unsubscribe-path",
+      "version": "1.0.0",
+      "title": "Unsubscribe Path",
+      "description": "Apply unsubscribe path as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use unsubscribe path when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/sender-identity",
+      "version": "1.0.0",
+      "title": "Sender Identity",
+      "description": "Apply sender identity as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use sender identity when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/claims-and-offers",
+      "version": "1.0.0",
+      "title": "Claims and Offers",
+      "description": "Apply claims and offers as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use claims and offers when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "high"
+    },
+    {
+      "id": "content/deliverability-review",
+      "version": "1.0.0",
+      "title": "Deliverability Review",
+      "description": "Apply deliverability review as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use deliverability review when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/frequency-governance",
+      "version": "1.0.0",
+      "title": "Frequency Governance",
+      "description": "Apply frequency governance as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use frequency governance when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/experiment-design",
+      "version": "1.0.0",
+      "title": "Experiment Design",
+      "description": "Apply experiment design as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use experiment design when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/campaign-measurement",
+      "version": "1.0.0",
+      "title": "Campaign Measurement",
+      "description": "Apply campaign measurement as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use campaign measurement when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "content/campaign-retrospective",
+      "version": "1.0.0",
+      "title": "Campaign Retrospective",
+      "description": "Apply campaign retrospective as an explicit, reviewable part of the email marketing process.",
+      "categoryId": "content/email-marketing",
+      "capabilityIds": [
+        "content/email-marketing-delivery"
+      ],
+      "constraintIds": [
+        "content/original-evidence-backed-work"
+      ],
+      "deliverableIds": [
+        "content/email-marketing-deliverable"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-content-rationale",
+          "summary": "Use campaign retrospective when its documented purpose and review gate apply."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    }
+  ]
+}
