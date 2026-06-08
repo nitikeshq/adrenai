@@ -163,6 +163,7 @@ export interface PackResolution {
 }
 
 export * from "./checks.js";
+export * from "./ai.js";
 export * from "./policy.js";
 export * from "./selection.js";
 export * from "./session.js";

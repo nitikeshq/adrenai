@@ -1051,6 +1051,7 @@ export function resolveRecommendedPacks(
 }
 
 export * from "./checks.js";
+export * from "./ai.js";
 export * from "./inspection-hardening.js";
 export * from "./selection.js";
 export * from "./session.js";
