@@ -9,6 +9,7 @@ AdrenAI inspects a software repository and creates minimal, compatible,
 token-efficient configuration for AI coding agents. Core behavior is local,
 deterministic, and does not require an AI provider.
 
+**[Launch site](https://nitikeshq.github.io/adrenai/)** ·
 **[CLI guide](docs/cli-usage.md)** ·
 **[Contributing](CONTRIBUTING.md)** ·
 **[Security](SECURITY.md)**

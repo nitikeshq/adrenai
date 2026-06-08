@@ -14,7 +14,10 @@ const html = await readFile(resolve("site/index.html"), "utf8");
 for (const text of ["One setup.", "Every coding agent.", "npx adrenai", "Offline-first"]) {
   if (!html.includes(text)) throw new Error(`Launch site is missing required copy: ${text}`);
 }
-for (const placeholder of ["https://github.com/", "TODO", "PLACEHOLDER"]) {
+if (!html.includes("https://github.com/nitikeshq/adrenai")) {
+  throw new Error("Launch site is missing the public repository URL.");
+}
+for (const placeholder of ['href="https://github.com/"', "TODO", "PLACEHOLDER"]) {
   if (html.includes(placeholder)) throw new Error(`Launch site contains placeholder: ${placeholder}`);
 }
 for (const match of html.matchAll(/(?:href|src)="(\.\/[^"#?]+)"/g)) {
