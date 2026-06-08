@@ -59,8 +59,9 @@
     "secret-scan": "node scripts/secret-scan.mjs",
     "release:tag": "node scripts/verify-release-tag.mjs",
     "release:tag:test": "node scripts/release-tag-test.mjs",
+    "homebrew:test": "node scripts/homebrew-formula-test.mjs",
     "prepack": "corepack pnpm check && corepack pnpm test && corepack pnpm build",
-    "release:check": "corepack pnpm audit --audit-level=high && corepack pnpm secret-scan && corepack pnpm site:validate && corepack pnpm release:tag:test && corepack pnpm prepack && node scripts/validate-release.mjs && node scripts/smoke-test.mjs && node scripts/demo-smoke-test.mjs && node scripts/performance-test.mjs && npm pack --dry-run"
+    "release:check": "corepack pnpm audit --audit-level=high && corepack pnpm secret-scan && corepack pnpm site:validate && corepack pnpm release:tag:test && corepack pnpm homebrew:test && corepack pnpm prepack && node scripts/validate-release.mjs && node scripts/smoke-test.mjs && node scripts/demo-smoke-test.mjs && node scripts/performance-test.mjs && npm pack --dry-run"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
