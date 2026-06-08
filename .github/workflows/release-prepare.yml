@@ -30,7 +30,7 @@ jobs:
       - run: pnpm build
       - run: node scripts/validate-release.mjs
       - run: node scripts/prepare-release.mjs
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: npm-packages-${{ github.sha }}
           path: artifacts/npm/*.tgz
