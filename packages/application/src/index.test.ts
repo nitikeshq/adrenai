@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import {
   inspectRepository,
+  collectProjectSynthesisInput,
   generatePortableSetup,
   doctorRepository,
   detectManagedDrift,
@@ -72,6 +73,26 @@ describe("inspectRepository", () => {
     );
 
     expect(inspection.agents).toEqual([]);
+  });
+});
+
+describe("collectProjectSynthesisInput", () => {
+  it("collects authored requirements from agent configuration and project documents", async () => {
+    const fileSystem = new MemoryFileSystem({
+      "package.json": JSON.stringify({ devDependencies: { typescript: "1.0.0" } }),
+      "AGENTS.md": "- Run tests before completion.\n",
+      "README.md": "- Preserve backwards compatibility.\n",
+      "docs/architecture.md": "- Use the existing module boundaries.\n",
+    });
+    const inspection = await inspectRepository("/project", fileSystem);
+    const input = await collectProjectSynthesisInput(inspection, fileSystem);
+
+    expect(input.requirements.map(({ text }) => text)).toEqual([
+      "Run tests before completion.",
+      "Preserve backwards compatibility.",
+      "Use the existing module boundaries.",
+    ]);
+    expect(input.inspection.technologies.some(({ id }) => id === "typescript")).toBe(true);
   });
 });
 

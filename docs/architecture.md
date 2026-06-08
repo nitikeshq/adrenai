@@ -11,6 +11,8 @@ Taxonomy and policy extension contracts are documented in
 [policy authoring](policy-authoring.md).
 The UI-neutral progressive-discovery behavior is documented in
 [guided selection](guided-selection.md).
+[Existing project synthesis](project-synthesis.md) defines how repository
+evidence becomes a reviewable brief without treating inference as fact.
 
 ## Design goals
 
