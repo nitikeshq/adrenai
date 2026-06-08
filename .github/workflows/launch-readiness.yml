@@ -39,6 +39,7 @@ jobs:
             --exclude-path dist
             --exclude '^https://github.com/nitikeshq/adrenai/actions/workflows/ci\.yml'
             --exclude '^https://www\.npmjs\.com/package/adrenai$'
+            --exclude '^https://nitikeshq\.github\.io/adrenai/$'
             README.md
             docs
             .github
@@ -54,6 +55,7 @@ jobs:
             --exclude-path dist
             --exclude '^https://github.com/nitikeshq/adrenai/actions/workflows/ci\.yml'
             --exclude '^https://www\.npmjs\.com/package/adrenai$'
+            --exclude '^https://nitikeshq\.github\.io/adrenai/$'
             README.md
             docs
             .github
