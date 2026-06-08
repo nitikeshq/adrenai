@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "namespace": "example",
+  "metadata": {
+    "name": "Example AdrenAI bundle",
+    "version": "0.1.0",
+    "license": "Apache-2.0",
+    "authors": ["Example contributor"],
+    "originalityConfirmed": true,
+    "evidenceReviewed": true,
+    "testFiles": ["tests/example-bundle.test.ts"]
+  },
+  "taxonomy": {
+    "schemaVersion": 1,
+    "namespace": "example",
+    "categories": [],
+    "strategies": [],
+    "capabilities": [],
+    "constraints": [],
+    "deliverables": [],
+    "audiences": []
+  },
+  "workflows": [],
+  "policies": [],
+  "packs": [],
+  "adapters": []
+}

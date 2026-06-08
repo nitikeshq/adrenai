@@ -10,5 +10,9 @@
   "publishConfig": {
     "access": "public",
     "provenance": true
+  },
+  "dependencies": {
+    "@adrenai/domain": "workspace:*",
+    "@adrenai/schemas": "workspace:*"
   }
 }
