@@ -18,6 +18,10 @@ import {
   diagnoseSessionAlignment,
   hashSessionContext,
   transitionSession,
+  detectAiProviderEnvironments,
+  detectInstalledAgentEnvironments,
+  previewAiRequest,
+  redactAiContent,
   planQualityGates,
   planSynchronization,
   recommendRepository,
@@ -31,6 +35,13 @@ import {
   runQualityGatePlans,
   Sha256ContentHasher,
 } from "@adrenai/infrastructure";
+import {
+  createRegistryLockfile,
+  previewRegistryUpdate,
+  quarantineExternalSkill,
+  validateRegistry,
+  type RegistryEntry,
+} from "@adrenai/sdk";
 import {
   formatApplyResult,
   formatArtifacts,
@@ -65,6 +76,11 @@ Usage:
   adrenai session-start [path] --workflow=design/interface-delivery --session=my-session [--write] [--json]
   adrenai session-status [path] --session=my-session [--json]
   adrenai session-action [path] --session=my-session --action=pause|resume|handoff|complete [--write] [--json]
+  adrenai ai-status [path] [--json]
+  adrenai ai-preview [path] --capability=summarize --content="text" [--json]
+  adrenai registry-list [path] --registry=registry.json [--json]
+  adrenai registry-import [path] --source=skill.md [--write] [--json]
+  adrenai registry-update-preview [path] --registry=current.json --next=next.json [--json]
   adrenai drift [path] [--json]
   adrenai validate [path] [--json]
   adrenai sync [path] [--write] [--agents=codex,claude-code,cursor]
@@ -99,6 +115,10 @@ async function main(): Promise<void> {
   }
   const platformRoot = resolve(catalogRoot, "..");
   const loadPlatform = () => loadPlatformCatalog(platformRoot, fileSystem);
+  const registryCrypto = {
+    checksum: (content: string) => hasher.hash(content),
+    verifySignature: () => false,
+  };
   if (command === "packs") {
     const catalog = await loadPackCatalog(catalogRoot, fileSystem);
     console.log(parsed.json ? JSON.stringify(catalog, null, 2) : formatCatalog(catalog));
@@ -119,6 +139,64 @@ async function main(): Promise<void> {
     const catalog = await loadPlatform();
     console.log(parsed.json ? JSON.stringify(catalog.workflows, null, 2) : catalog.workflows.map(({ id, title }) => `${id} | ${title}`).join("\n"));
     if (catalog.diagnostics.some(({ severity }) => severity === "error")) process.exitCode = 1;
+    return;
+  }
+  if (command === "ai-status") {
+    const files = await fileSystem.listFiles(root);
+    const output = {
+      installedAgents: detectInstalledAgentEnvironments(files.map((path) => path.replaceAll("\\", "/"))),
+      availableProviders: detectAiProviderEnvironments(Object.keys(process.env)),
+      note: "Provider availability requires a provider environment key; agent configuration alone is not a provider.",
+    };
+    console.log(JSON.stringify(output, null, 2));
+    return;
+  }
+  if (command === "ai-preview") {
+    if (!parsed.capability || parsed.content === undefined) throw new Error("ai-preview requires --capability=<id> and --content=<text>.");
+    const provider = detectAiProviderEnvironments(Object.keys(process.env))[0] ?? {
+      id: "offline-preview", title: "Offline preview only",
+      capabilities: ["summarize", "gap-analysis", "custom-strategy"] as const,
+      detectionEvidence: ["no provider available; nothing will be transmitted"],
+    };
+    const preview = previewAiRequest(provider, parsed.capability, parsed.content, "Use deterministic offline selection and templates.");
+    console.log(JSON.stringify({ preview, transmission: "none", nextStep: "Integrate an explicitly consented provider adapter to execute." }, null, 2));
+    return;
+  }
+  if (command === "registry-list") {
+    if (!parsed.registry) throw new Error("registry-list requires --registry=<path>.");
+    const value = JSON.parse(await fileSystem.readText(root, parsed.registry)) as unknown;
+    const candidates = Array.isArray(value) ? value : (value as { entries?: unknown[] }).entries;
+    if (!Array.isArray(candidates)) throw new Error("Registry must be an entry array or an object containing entries.");
+    const embedded = candidates.filter((entry): entry is RegistryEntry => typeof entry === "object" && entry !== null && "bundle" in entry);
+    const validation = validateRegistry(embedded, registryCrypto);
+    console.log(JSON.stringify({
+      entries: candidates,
+      embeddedEntryCount: embedded.length,
+      lockfile: createRegistryLockfile(embedded),
+      diagnostics: validation.diagnostics,
+      note: embedded.length === candidates.length ? "All entries validated." : "Index descriptors listed; import referenced bundles separately before validation.",
+    }, null, 2));
+    if (!validation.valid) process.exitCode = 1;
+    return;
+  }
+  if (command === "registry-import") {
+    if (!parsed.source) throw new Error("registry-import requires --source=<path>.");
+    const raw = await fileSystem.readText(root, parsed.source);
+    const redacted = redactAiContent(raw);
+    const item = quarantineExternalSkill(redacted.content, {
+      sourceUrl: parsed.source, sourceType: "local", publisher: "local-user",
+      importedAt: new Date().toISOString(),
+    }, registryCrypto);
+    const path = `.adrenai/registry/quarantine/${item.checksum}.json`;
+    if (parsed.write) await fileSystem.writeText(root, path, `${JSON.stringify(item, null, 2)}\n`);
+    console.log(JSON.stringify({ preview: !parsed.write, path, redactions: redacted.redactions, quarantine: item }, null, 2));
+    return;
+  }
+  if (command === "registry-update-preview") {
+    if (!parsed.registry || !parsed.next) throw new Error("registry-update-preview requires --registry=<current-entry> and --next=<next-entry>.");
+    const current = JSON.parse(await fileSystem.readText(root, parsed.registry)) as RegistryEntry;
+    const next = JSON.parse(await fileSystem.readText(root, parsed.next)) as RegistryEntry;
+    console.log(JSON.stringify(previewRegistryUpdate(current, next), null, 2));
     return;
   }
   if (command === "workflow-plan") {

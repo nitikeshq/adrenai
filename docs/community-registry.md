@@ -22,6 +22,19 @@ Local registries and offline bundles use the same metadata and validation
 process. `examples/local-registry.json` and `examples/community-bundle.json`
 provide local fixtures.
 
+User-facing local commands remain offline and preview-first:
+
+```bash
+adrenai registry-list . --registry=examples/local-registry.json
+adrenai registry-import . --source=community-skill.md
+adrenai registry-import . --source=community-skill.md --write
+adrenai registry-update-preview . --registry=current-entry.json --next=next-entry.json
+```
+
+Imports redact secret-like values before writing a non-executable quarantine
+record under `.adrenai/registry/quarantine/`. Listing validates entries and
+prints a lockfile preview. Update previews always require later approval.
+
 ## Moderation and Takedown
 
 Contributions begin as `pending`. Reviewers may mark them `approved`,

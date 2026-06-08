@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   approveAiRequest,
   detectAiProviderEnvironments,
+  detectInstalledAgentEnvironments,
   executeOptionalAi,
   previewAiRequest,
   redactAiContent,
@@ -23,12 +24,11 @@ const budget = {
 
 describe("optional AI provider controls", () => {
   it("detects environments through inspectable indicators without exposing values", () => {
-    const detected = detectAiProviderEnvironments(
-      ["OPENAI_API_KEY"],
-      ["CLAUDE.md", ".cursor/rules/project.mdc"],
-    );
+    const detected = detectAiProviderEnvironments(["OPENAI_API_KEY"]);
 
-    expect(detected.map(({ id }) => id)).toEqual(["openai", "anthropic", "cursor"]);
+    expect(detected.map(({ id }) => id)).toEqual(["openai"]);
+    expect(detectInstalledAgentEnvironments(["AGENTS.md", "CLAUDE.md", ".cursor/rules/project.mdc"]))
+      .toEqual(["codex", "claude-code", "cursor"]);
     expect(JSON.stringify(detected)).not.toContain("actual-secret-value");
     expect(detected[0]?.detectionEvidence).toContain(
       "environment variable present: OPENAI_API_KEY",

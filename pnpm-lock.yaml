@@ -39,6 +39,9 @@ importers:
       '@adrenai/infrastructure':
         specifier: workspace:*
         version: link:../../packages/infrastructure
+      '@adrenai/sdk':
+        specifier: workspace:*
+        version: link:../../packages/sdk
 
   packages/adapters:
     dependencies:

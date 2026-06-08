@@ -14,6 +14,11 @@ export type CommandName =
   | "session-start"
   | "session-status"
   | "session-action"
+  | "ai-status"
+  | "ai-preview"
+  | "registry-list"
+  | "registry-import"
+  | "registry-update-preview"
   | "recommend"
   | "sync"
   | "tui"
@@ -33,6 +38,11 @@ export interface ParsedArguments {
   session?: string;
   action?: "pause" | "resume" | "handoff" | "complete";
   gates?: string[];
+  source?: string;
+  registry?: string;
+  next?: string;
+  capability?: "summarize" | "gap-analysis" | "custom-strategy";
+  content?: string;
 }
 
 const COMMANDS = new Set<CommandName>([
@@ -49,6 +59,11 @@ const COMMANDS = new Set<CommandName>([
   "session-start",
   "session-status",
   "session-action",
+  "ai-status",
+  "ai-preview",
+  "registry-list",
+  "registry-import",
+  "registry-update-preview",
   "recommend",
   "sync",
   "tui",
@@ -72,6 +87,11 @@ export function parseArguments(args: string[]): ParsedArguments {
   let session: string | undefined;
   let action: ParsedArguments["action"];
   let gates: string[] | undefined;
+  let source: string | undefined;
+  let registry: string | undefined;
+  let next: string | undefined;
+  let capability: ParsedArguments["capability"];
+  let content: string | undefined;
 
   for (const argument of args) {
     if (!argument.startsWith("-")) {
@@ -92,6 +112,11 @@ export function parseArguments(args: string[]): ParsedArguments {
       && !argument.startsWith("--session=")
       && !argument.startsWith("--action=")
       && !argument.startsWith("--gates=")
+      && !argument.startsWith("--source=")
+      && !argument.startsWith("--registry=")
+      && !argument.startsWith("--next=")
+      && !argument.startsWith("--capability=")
+      && !argument.startsWith("--content=")
     ) {
       throw new Error(`Unknown option: ${argument}`);
     }
@@ -115,6 +140,15 @@ export function parseArguments(args: string[]): ParsedArguments {
       action = value as ParsedArguments["action"];
     }
     if (argument.startsWith("--gates=")) gates = [...new Set(argument.slice(8).split(",").filter(Boolean))];
+    if (argument.startsWith("--source=")) source = argument.slice(9);
+    if (argument.startsWith("--registry=")) registry = argument.slice(11);
+    if (argument.startsWith("--next=")) next = argument.slice(7);
+    if (argument.startsWith("--content=")) content = argument.slice(10);
+    if (argument.startsWith("--capability=")) {
+      const value = argument.slice(13);
+      if (!["summarize", "gap-analysis", "custom-strategy"].includes(value)) throw new Error(`Unsupported AI capability: ${value}`);
+      capability = value as ParsedArguments["capability"];
+    }
   }
 
   const commandValue = positional[0];
@@ -127,8 +161,8 @@ export function parseArguments(args: string[]): ParsedArguments {
   if (agents && commandValue !== "apply" && commandValue !== "sync") {
     throw new Error("--agents is only supported by the apply and sync commands.");
   }
-  if (args.includes("--write") && !["apply", "sync", "session-start", "session-action"].includes(commandValue ?? "")) {
-    throw new Error("--write is only supported by apply, sync, session-start, and session-action.");
+  if (args.includes("--write") && !["apply", "sync", "session-start", "session-action", "registry-import"].includes(commandValue ?? "")) {
+    throw new Error("--write is not supported by this command.");
   }
   if (args.includes("--run") && commandValue !== "check") {
     throw new Error("--run is only supported by the check command.");
@@ -148,5 +182,10 @@ export function parseArguments(args: string[]): ParsedArguments {
     session,
     action,
     gates,
+    source,
+    registry,
+    next,
+    capability,
+    content,
   };
 }
