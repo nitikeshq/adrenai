@@ -33,3 +33,11 @@ for (const command of commands) {
     break;
   }
 }
+
+if (!process.exitCode) {
+  const formula = spawnSync(process.execPath, ["scripts/prepare-homebrew-formula.mjs"], {
+    stdio: "inherit",
+    shell: false,
+  });
+  if (formula.status !== 0) process.exitCode = formula.status ?? 1;
+}

@@ -26,6 +26,8 @@ git push origin v0.1.0
 ```
 
 The workflow stops before publishing when the tag and package version differ.
+See [Homebrew publishing](homebrew-publishing.md) for tap setup, formula
+generation, verification, and rollback.
 
 Use this checklist for every public AdrenAI release.
 
