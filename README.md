@@ -11,6 +11,7 @@ deterministic, and does not require an AI provider.
 
 **[Launch site](https://nitikeshq.github.io/adrenai/)** ·
 **[CLI guide](docs/cli-usage.md)** ·
+**[1.0 release plan](docs/release-1.0-plan.md)** ·
 **[Contributing](CONTRIBUTING.md)** ·
 **[Security](SECURITY.md)**
 
