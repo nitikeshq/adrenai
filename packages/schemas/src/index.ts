@@ -8,14 +8,8 @@ import type {
   PackValidationResult,
 } from "@adrenai/domain";
 
-const PACK_TYPES = new Set<PackType>([
-  "architecture",
-  "development",
-  "governance",
-  "operations",
-  "security",
-  "testing",
-]);
+export { validateTaxonomyCatalog } from "./taxonomy.js";
+
 const AGENTS = new Set<AgentId>([
   "claude-code",
   "codex",
@@ -26,6 +20,7 @@ const AGENTS = new Set<AgentId>([
   "generic",
 ]);
 const PACK_ID = /^[a-z][a-z0-9-]*\/[a-z][a-z0-9-]*$/;
+const CATEGORY_ID = /^[a-z][a-z0-9-]*(?:\/[a-z][a-z0-9-]*)*$/;
 const SEMVER = /^\d+\.\d+\.\d+$/;
 const PACK_KEYS = new Set([
   "id",
@@ -34,6 +29,7 @@ const PACK_KEYS = new Set([
   "title",
   "description",
   "appliesWhen",
+  "strategyIds",
   "requires",
   "conflicts",
   "guidance",
@@ -90,8 +86,8 @@ export function validatePackManifest(value: unknown): PackValidationResult {
     issues.push({ path: "version", message: "must be a full semantic version" });
   }
   const typeValue = requiredString(value, "type", issues);
-  if (typeValue && !PACK_TYPES.has(typeValue as PackType)) {
-    issues.push({ path: "type", message: "is not a supported pack type" });
+  if (typeValue && !CATEGORY_ID.test(typeValue)) {
+    issues.push({ path: "type", message: "must be a lowercase category id" });
   }
 
   const appliesWhen = isRecord(value.appliesWhen) ? value.appliesWhen : {};
@@ -124,6 +120,7 @@ export function validatePackManifest(value: unknown): PackValidationResult {
       ),
       agents: agents as AgentId[],
     },
+    strategyIds: stringArray(value.strategyIds ?? [], "strategyIds", issues),
     requires: stringArray(value.requires ?? [], "requires", issues),
     conflicts: stringArray(value.conflicts ?? [], "conflicts", issues),
     guidance: stringArray(value.guidance ?? [], "guidance", issues),
@@ -131,12 +128,13 @@ export function validatePackManifest(value: unknown): PackValidationResult {
   };
 
   for (const [path, ids] of [
+    ["strategyIds", pack.strategyIds ?? []],
     ["requires", pack.requires],
     ["conflicts", pack.conflicts],
   ] as const) {
     for (const dependency of ids) {
       if (!PACK_ID.test(dependency)) {
-        issues.push({ path, message: `contains invalid pack id ${dependency}` });
+        issues.push({ path, message: `contains invalid id ${dependency}` });
       }
     }
   }

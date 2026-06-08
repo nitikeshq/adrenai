@@ -4,6 +4,10 @@ Packs are declarative, versioned units of guidance. They may describe
 development, architecture, governance, operations, security, or testing
 practices. Packs cannot execute code.
 
+Packs are implementations of guidance, not strategy identities. See
+[Taxonomy Authoring](taxonomy-authoring.md) for community-defined categories and
+strategies.
+
 ## Directory convention
 
 ```text
@@ -42,11 +46,12 @@ The manifest filename must be `pack.json`.
 |---|---|
 | `id` | Lowercase `category/name` format |
 | `version` | Full semantic version such as `1.2.3` |
-| `type` | `architecture`, `development`, `governance`, `operations`, `security`, or `testing` |
+| `type` | Lowercase category ID; existing built-ins include `architecture`, `development`, `governance`, `operations`, `security`, and `testing` |
 | `title` | Non-empty human-readable title |
 | `description` | Non-empty explanation of purpose |
 | `appliesWhen.technologies` | Optional array of detected technology IDs |
 | `appliesWhen.agents` | Optional array of supported agent IDs |
+| `strategyIds` | Optional strategy identities implemented by this pack |
 | `requires` | Pack IDs that must be resolved first |
 | `conflicts` | Pack IDs that cannot be selected together |
 | `guidance` | Focused instructions generated for agents |
