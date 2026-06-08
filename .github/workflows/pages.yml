@@ -35,7 +35,7 @@ jobs:
       - name: Validate launch site
         run: node scripts/validate-site.mjs
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
       - name: Deploy to GitHub Pages
