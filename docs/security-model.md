@@ -78,6 +78,12 @@ secret-like state, diagnoses process drift, and produces an approval-required
 teardown plan. It never overwrites user-authored agent instructions. See
 [session alignment and security](session-security.md).
 
+### Optional AI provider privacy
+
+Provider requests require a redacted preview, content-bound consent, and budget
+approval. Offline fallback remains available and provider SDKs are not default
+dependencies. See [optional AI providers and privacy](ai-provider-privacy.md).
+
 ## Known limitations
 
 - Markdown instruction parsing is diagnostic, not a security sandbox.
