@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "design/interface-delivery",
+  "version": "1.0.0",
+  "title": "Interface Design Delivery",
+  "phases": [
+    { "id": "brief", "title": "Approve audience, brand, and accessibility constraints", "dependsOn": [], "inputs": ["product-brief"], "outputs": ["approved-design-brief"], "gateIds": [], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "direction", "title": "Compare visual and motion directions", "dependsOn": ["brief"], "inputs": ["approved-design-brief"], "outputs": ["selected-direction"], "gateIds": [], "approvalRequired": true, "optional": false, "retryLimit": 2 },
+    { "id": "prototype", "title": "Build responsive accessible prototype", "dependsOn": ["direction"], "inputs": ["selected-direction"], "outputs": ["prototype"], "gateIds": ["configured-browser-tests"], "approvalRequired": false, "optional": false, "retryLimit": 2 },
+    { "id": "review", "title": "Review accessibility, brand, motion, and handoff", "dependsOn": ["prototype"], "inputs": ["prototype"], "outputs": ["design-handoff"], "gateIds": ["accessibility-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 }
+  ]
+}
