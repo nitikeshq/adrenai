@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "presentation",
+  "title": "Decision Review",
+  "templateId": "presentation/decision-review",
+  "brandTokens": { "primary": "#123456" },
+  "sections": [{ "id": "recommendation", "title": "Recommendation", "content": ["A supported recommendation and next decision."] }],
+  "accessibilityRequirements": ["accessible reading order"],
+  "validationRules": ["data source notes"],
+  "reviewGateIds": ["brand-review", "stakeholder-review", "accessibility-review"],
+  "exportTargets": [{ "format": "pptx", "purpose": "live presentation" }, { "format": "pdf", "purpose": "distribution" }]
+}

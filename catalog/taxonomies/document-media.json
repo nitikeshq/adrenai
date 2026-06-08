@@ -1,0 +1,2395 @@
+{
+  "schemaVersion": 1,
+  "namespace": "media",
+  "categories": [
+    {
+      "id": "media/poster",
+      "version": "1.0.0",
+      "title": "Poster",
+      "description": "Strategies for planning, reviewing, and exporting poster deliverables."
+    },
+    {
+      "id": "media/document",
+      "version": "1.0.0",
+      "title": "Document",
+      "description": "Strategies for planning, reviewing, and exporting document deliverables."
+    },
+    {
+      "id": "media/spreadsheet",
+      "version": "1.0.0",
+      "title": "Spreadsheet",
+      "description": "Strategies for planning, reviewing, and exporting spreadsheet deliverables."
+    },
+    {
+      "id": "media/presentation",
+      "version": "1.0.0",
+      "title": "Presentation",
+      "description": "Strategies for planning, reviewing, and exporting presentation deliverables."
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "media/format-neutral-planning",
+      "version": "1.0.0",
+      "title": "Format-Neutral Planning",
+      "description": "Plan deliverables independently from file-format rendering adapters."
+    }
+  ],
+  "constraints": [
+    {
+      "id": "media/brand-accessibility-and-export",
+      "version": "1.0.0",
+      "title": "Brand, Accessibility, and Export",
+      "description": "Require explicit branding, accessibility, data, review, and export constraints."
+    }
+  ],
+  "deliverables": [
+    {
+      "id": "media/poster-plan",
+      "version": "1.0.0",
+      "title": "Poster Plan",
+      "description": "A validated format-neutral plan for a poster deliverable."
+    },
+    {
+      "id": "media/document-plan",
+      "version": "1.0.0",
+      "title": "Document Plan",
+      "description": "A validated format-neutral plan for a document deliverable."
+    },
+    {
+      "id": "media/spreadsheet-plan",
+      "version": "1.0.0",
+      "title": "Spreadsheet Plan",
+      "description": "A validated format-neutral plan for a spreadsheet deliverable."
+    },
+    {
+      "id": "media/presentation-plan",
+      "version": "1.0.0",
+      "title": "Presentation Plan",
+      "description": "A validated format-neutral plan for a presentation deliverable."
+    }
+  ],
+  "audiences": [],
+  "strategies": [
+    {
+      "id": "media/poster-audience-and-purpose",
+      "version": "1.0.0",
+      "title": "Audience And Purpose",
+      "description": "Apply audience and purpose as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use audience and purpose when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-single-message",
+      "version": "1.0.0",
+      "title": "Single Message",
+      "description": "Apply single message as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use single message when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-visual-hierarchy",
+      "version": "1.0.0",
+      "title": "Visual Hierarchy",
+      "description": "Apply visual hierarchy as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use visual hierarchy when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-grid-composition",
+      "version": "1.0.0",
+      "title": "Grid Composition",
+      "description": "Apply grid composition as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use grid composition when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-brand-tokens",
+      "version": "1.0.0",
+      "title": "Brand Tokens",
+      "description": "Apply brand tokens as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use brand tokens when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-type-scale",
+      "version": "1.0.0",
+      "title": "Type Scale",
+      "description": "Apply type scale as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use type scale when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-readable-distance",
+      "version": "1.0.0",
+      "title": "Readable Distance",
+      "description": "Apply readable distance as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use readable distance when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-color-contrast",
+      "version": "1.0.0",
+      "title": "Color Contrast",
+      "description": "Apply color contrast as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use color contrast when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-image-rights",
+      "version": "1.0.0",
+      "title": "Image Rights",
+      "description": "Apply image rights as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use image rights when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "high"
+    },
+    {
+      "id": "media/poster-image-quality",
+      "version": "1.0.0",
+      "title": "Image Quality",
+      "description": "Apply image quality as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use image quality when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-call-to-action",
+      "version": "1.0.0",
+      "title": "Call To Action",
+      "description": "Apply call to action as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use call to action when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-content-density",
+      "version": "1.0.0",
+      "title": "Content Density",
+      "description": "Apply content density as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use content density when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-whitespace",
+      "version": "1.0.0",
+      "title": "Whitespace",
+      "description": "Apply whitespace as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use whitespace when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-accessible-color",
+      "version": "1.0.0",
+      "title": "Accessible Color",
+      "description": "Apply accessible color as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use accessible color when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-alternate-text-plan",
+      "version": "1.0.0",
+      "title": "Alternate Text Plan",
+      "description": "Apply alternate text plan as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use alternate text plan when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-print-bleed",
+      "version": "1.0.0",
+      "title": "Print Bleed",
+      "description": "Apply print bleed as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use print bleed when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-safe-area",
+      "version": "1.0.0",
+      "title": "Safe Area",
+      "description": "Apply safe area as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use safe area when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-export-resolution",
+      "version": "1.0.0",
+      "title": "Export Resolution",
+      "description": "Apply export resolution as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use export resolution when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-proof-review",
+      "version": "1.0.0",
+      "title": "Proof Review",
+      "description": "Apply proof review as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use proof review when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/poster-poster-acceptance",
+      "version": "1.0.0",
+      "title": "Poster Acceptance",
+      "description": "Apply poster acceptance as a documented and reviewable part of the poster deliverable plan.",
+      "categoryId": "media/poster",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/poster-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use poster acceptance when preparing and reviewing a poster deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-document-purpose",
+      "version": "1.0.0",
+      "title": "Document Purpose",
+      "description": "Apply document purpose as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use document purpose when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-reader-profile",
+      "version": "1.0.0",
+      "title": "Reader Profile",
+      "description": "Apply reader profile as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use reader profile when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-document-outline",
+      "version": "1.0.0",
+      "title": "Document Outline",
+      "description": "Apply document outline as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use document outline when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-heading-hierarchy",
+      "version": "1.0.0",
+      "title": "Heading Hierarchy",
+      "description": "Apply heading hierarchy as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use heading hierarchy when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-style-system",
+      "version": "1.0.0",
+      "title": "Style System",
+      "description": "Apply style system as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use style system when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-brand-template",
+      "version": "1.0.0",
+      "title": "Brand Template",
+      "description": "Apply brand template as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use brand template when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-page-layout",
+      "version": "1.0.0",
+      "title": "Page Layout",
+      "description": "Apply page layout as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use page layout when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-navigation-aids",
+      "version": "1.0.0",
+      "title": "Navigation Aids",
+      "description": "Apply navigation aids as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use navigation aids when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-table-design",
+      "version": "1.0.0",
+      "title": "Table Design",
+      "description": "Apply table design as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use table design when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-figure-captions",
+      "version": "1.0.0",
+      "title": "Figure Captions",
+      "description": "Apply figure captions as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use figure captions when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-source-citations",
+      "version": "1.0.0",
+      "title": "Source Citations",
+      "description": "Apply source citations as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use source citations when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-cross-references",
+      "version": "1.0.0",
+      "title": "Cross References",
+      "description": "Apply cross references as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use cross references when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-accessible-language",
+      "version": "1.0.0",
+      "title": "Accessible Language",
+      "description": "Apply accessible language as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use accessible language when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-document-accessibility",
+      "version": "1.0.0",
+      "title": "Document Accessibility",
+      "description": "Apply document accessibility as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use document accessibility when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-metadata",
+      "version": "1.0.0",
+      "title": "Metadata",
+      "description": "Apply metadata as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use metadata when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-version-control",
+      "version": "1.0.0",
+      "title": "Version Control",
+      "description": "Apply version control as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use version control when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-editorial-review",
+      "version": "1.0.0",
+      "title": "Editorial Review",
+      "description": "Apply editorial review as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use editorial review when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-legal-review",
+      "version": "1.0.0",
+      "title": "Legal Review",
+      "description": "Apply legal review as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use legal review when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "high"
+    },
+    {
+      "id": "media/document-export-review",
+      "version": "1.0.0",
+      "title": "Export Review",
+      "description": "Apply export review as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use export review when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/document-document-acceptance",
+      "version": "1.0.0",
+      "title": "Document Acceptance",
+      "description": "Apply document acceptance as a documented and reviewable part of the document deliverable plan.",
+      "categoryId": "media/document",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/document-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use document acceptance when preparing and reviewing a document deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-workbook-purpose",
+      "version": "1.0.0",
+      "title": "Workbook Purpose",
+      "description": "Apply workbook purpose as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use workbook purpose when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-data-contract",
+      "version": "1.0.0",
+      "title": "Data Contract",
+      "description": "Apply data contract as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use data contract when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-input-output-separation",
+      "version": "1.0.0",
+      "title": "Input Output Separation",
+      "description": "Apply input output separation as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use input output separation when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-table-structure",
+      "version": "1.0.0",
+      "title": "Table Structure",
+      "description": "Apply table structure as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use table structure when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-stable-identifiers",
+      "version": "1.0.0",
+      "title": "Stable Identifiers",
+      "description": "Apply stable identifiers as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use stable identifiers when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-data-validation",
+      "version": "1.0.0",
+      "title": "Data Validation",
+      "description": "Apply data validation as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use data validation when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-formula-boundaries",
+      "version": "1.0.0",
+      "title": "Formula Boundaries",
+      "description": "Apply formula boundaries as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use formula boundaries when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-formula-audit",
+      "version": "1.0.0",
+      "title": "Formula Audit",
+      "description": "Apply formula audit as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use formula audit when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "high"
+    },
+    {
+      "id": "media/spreadsheet-error-handling",
+      "version": "1.0.0",
+      "title": "Error Handling",
+      "description": "Apply error handling as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use error handling when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-named-ranges",
+      "version": "1.0.0",
+      "title": "Named Ranges",
+      "description": "Apply named ranges as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use named ranges when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-units-and-formats",
+      "version": "1.0.0",
+      "title": "Units And Formats",
+      "description": "Apply units and formats as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use units and formats when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-conditional-formatting",
+      "version": "1.0.0",
+      "title": "Conditional Formatting",
+      "description": "Apply conditional formatting as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use conditional formatting when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-accessible-colors",
+      "version": "1.0.0",
+      "title": "Accessible Colors",
+      "description": "Apply accessible colors as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use accessible colors when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-worksheet-navigation",
+      "version": "1.0.0",
+      "title": "Worksheet Navigation",
+      "description": "Apply worksheet navigation as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use worksheet navigation when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-protected-inputs",
+      "version": "1.0.0",
+      "title": "Protected Inputs",
+      "description": "Apply protected inputs as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use protected inputs when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-scenario-modeling",
+      "version": "1.0.0",
+      "title": "Scenario Modeling",
+      "description": "Apply scenario modeling as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use scenario modeling when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-reconciliation",
+      "version": "1.0.0",
+      "title": "Reconciliation",
+      "description": "Apply reconciliation as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use reconciliation when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-sample-data",
+      "version": "1.0.0",
+      "title": "Sample Data",
+      "description": "Apply sample data as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use sample data when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-export-review",
+      "version": "1.0.0",
+      "title": "Export Review",
+      "description": "Apply export review as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use export review when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/spreadsheet-spreadsheet-acceptance",
+      "version": "1.0.0",
+      "title": "Spreadsheet Acceptance",
+      "description": "Apply spreadsheet acceptance as a documented and reviewable part of the spreadsheet deliverable plan.",
+      "categoryId": "media/spreadsheet",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/spreadsheet-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use spreadsheet acceptance when preparing and reviewing a spreadsheet deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-presentation-objective",
+      "version": "1.0.0",
+      "title": "Presentation Objective",
+      "description": "Apply presentation objective as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use presentation objective when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-audience-decision",
+      "version": "1.0.0",
+      "title": "Audience Decision",
+      "description": "Apply audience decision as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use audience decision when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-story-arc",
+      "version": "1.0.0",
+      "title": "Story Arc",
+      "description": "Apply story arc as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use story arc when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-slide-outline",
+      "version": "1.0.0",
+      "title": "Slide Outline",
+      "description": "Apply slide outline as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use slide outline when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-one-point-per-slide",
+      "version": "1.0.0",
+      "title": "One Point Per Slide",
+      "description": "Apply one point per slide as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use one point per slide when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-visual-hierarchy",
+      "version": "1.0.0",
+      "title": "Visual Hierarchy",
+      "description": "Apply visual hierarchy as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use visual hierarchy when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-brand-template",
+      "version": "1.0.0",
+      "title": "Brand Template",
+      "description": "Apply brand template as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use brand template when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-type-scale",
+      "version": "1.0.0",
+      "title": "Type Scale",
+      "description": "Apply type scale as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use type scale when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-color-contrast",
+      "version": "1.0.0",
+      "title": "Color Contrast",
+      "description": "Apply color contrast as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use color contrast when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-chart-purpose",
+      "version": "1.0.0",
+      "title": "Chart Purpose",
+      "description": "Apply chart purpose as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use chart purpose when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-data-source-notes",
+      "version": "1.0.0",
+      "title": "Data Source Notes",
+      "description": "Apply data source notes as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use data source notes when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-speaker-notes",
+      "version": "1.0.0",
+      "title": "Speaker Notes",
+      "description": "Apply speaker notes as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use speaker notes when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-accessible-reading-order",
+      "version": "1.0.0",
+      "title": "Accessible Reading Order",
+      "description": "Apply accessible reading order as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use accessible reading order when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-alternate-text",
+      "version": "1.0.0",
+      "title": "Alternate Text",
+      "description": "Apply alternate text as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use alternate text when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-caption-plan",
+      "version": "1.0.0",
+      "title": "Caption Plan",
+      "description": "Apply caption plan as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use caption plan when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-timing-rehearsal",
+      "version": "1.0.0",
+      "title": "Timing Rehearsal",
+      "description": "Apply timing rehearsal as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use timing rehearsal when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-handoff-mode",
+      "version": "1.0.0",
+      "title": "Handoff Mode",
+      "description": "Apply handoff mode as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use handoff mode when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-export-review",
+      "version": "1.0.0",
+      "title": "Export Review",
+      "description": "Apply export review as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use export review when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-stakeholder-review",
+      "version": "1.0.0",
+      "title": "Stakeholder Review",
+      "description": "Apply stakeholder review as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use stakeholder review when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    },
+    {
+      "id": "media/presentation-presentation-acceptance",
+      "version": "1.0.0",
+      "title": "Presentation Acceptance",
+      "description": "Apply presentation acceptance as a documented and reviewable part of the presentation deliverable plan.",
+      "categoryId": "media/presentation",
+      "capabilityIds": [
+        "media/format-neutral-planning"
+      ],
+      "constraintIds": [
+        "media/brand-accessibility-and-export"
+      ],
+      "deliverableIds": [
+        "media/presentation-plan"
+      ],
+      "audienceIds": [],
+      "prerequisites": [],
+      "conflicts": [],
+      "compatibleWith": [],
+      "evidence": [
+        {
+          "source": "adrenai-reviewed-media-rationale",
+          "summary": "Use presentation acceptance when preparing and reviewing a presentation deliverable."
+        }
+      ],
+      "maturity": "stable",
+      "license": "Apache-2.0",
+      "risk": "low"
+    }
+  ]
+}

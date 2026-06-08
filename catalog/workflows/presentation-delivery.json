@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1, "id": "adrenai/presentation-delivery", "version": "1.0.0", "title": "Presentation Delivery",
+  "phases": [
+    { "id": "plan", "title": "Approve objective, audience decision, story, template, and constraints", "dependsOn": [], "inputs": ["presentation-brief", "template-selection"], "outputs": ["approved-plan"], "gateIds": ["template-review", "brand-review", "data-source-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "compose", "title": "Create format-neutral slide plan", "dependsOn": ["plan"], "inputs": ["approved-plan"], "outputs": ["presentation-plan"], "gateIds": [], "approvalRequired": false, "optional": false, "retryLimit": 2 },
+    { "id": "review", "title": "Review story, accessibility, evidence, and timing", "dependsOn": ["compose"], "inputs": ["presentation-plan"], "outputs": ["reviewed-presentation-plan"], "gateIds": ["stakeholder-review", "accessibility-review", "rehearsal-review"], "approvalRequired": true, "optional": false, "retryLimit": 2 },
+    { "id": "export", "title": "Approve adapter export", "dependsOn": ["review"], "inputs": ["reviewed-presentation-plan"], "outputs": ["presentation-export"], "gateIds": ["export-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 }
+  ]
+}

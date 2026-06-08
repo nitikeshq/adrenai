@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1, "id": "adrenai/document-delivery", "version": "1.0.0", "title": "Structured Document Delivery",
+  "phases": [
+    { "id": "plan", "title": "Approve purpose, outline, template, and constraints", "dependsOn": [], "inputs": ["document-brief", "template-selection"], "outputs": ["approved-plan"], "gateIds": ["template-review", "brand-review", "source-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "draft", "title": "Create format-neutral structured document", "dependsOn": ["plan"], "inputs": ["approved-plan"], "outputs": ["document-plan"], "gateIds": [], "approvalRequired": false, "optional": false, "retryLimit": 2 },
+    { "id": "review", "title": "Review structure, content, and accessibility", "dependsOn": ["draft"], "inputs": ["document-plan"], "outputs": ["reviewed-document-plan"], "gateIds": ["editorial-review", "accessibility-review"], "approvalRequired": true, "optional": false, "retryLimit": 2 },
+    { "id": "export", "title": "Approve adapter export", "dependsOn": ["review"], "inputs": ["reviewed-document-plan"], "outputs": ["document-export"], "gateIds": ["export-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1, "id": "adrenai/poster-delivery", "version": "1.0.0", "title": "Poster Delivery",
+  "phases": [
+    { "id": "plan", "title": "Approve purpose, audience, message, template, and brand constraints", "dependsOn": [], "inputs": ["poster-brief", "template-selection"], "outputs": ["approved-plan"], "gateIds": ["template-review", "brand-review", "image-rights-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "compose", "title": "Create format-neutral poster composition", "dependsOn": ["plan"], "inputs": ["approved-plan"], "outputs": ["poster-plan"], "gateIds": [], "approvalRequired": false, "optional": false, "retryLimit": 2 },
+    { "id": "review", "title": "Review content, accessibility, and print constraints", "dependsOn": ["compose"], "inputs": ["poster-plan"], "outputs": ["reviewed-poster-plan"], "gateIds": ["accessibility-review", "proof-review"], "approvalRequired": true, "optional": false, "retryLimit": 2 },
+    { "id": "export", "title": "Approve adapter export", "dependsOn": ["review"], "inputs": ["reviewed-poster-plan"], "outputs": ["poster-export"], "gateIds": ["export-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 }
+  ]
+}

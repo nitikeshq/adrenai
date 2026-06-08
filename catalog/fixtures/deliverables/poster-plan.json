@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "poster",
+  "title": "Community Event",
+  "templateId": "poster/community-event",
+  "brandTokens": { "primary": "#123456" },
+  "sections": [{ "id": "message", "title": "Main message", "content": ["A clear event message and call to action."] }],
+  "accessibilityRequirements": ["accessible contrast"],
+  "validationRules": ["print safe area"],
+  "reviewGateIds": ["brand-review", "accessibility-review", "proof-review"],
+  "exportTargets": [{ "format": "pdf", "purpose": "print" }, { "format": "image", "purpose": "digital distribution" }]
+}

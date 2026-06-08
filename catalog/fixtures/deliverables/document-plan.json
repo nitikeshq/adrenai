@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "kind": "document",
+  "title": "Project Brief",
+  "templateId": "document/project-brief",
+  "brandTokens": { "primary": "#123456" },
+  "sections": [{ "id": "summary", "title": "Executive summary", "content": ["A concise, approved project summary."] }],
+  "accessibilityRequirements": ["accessible headings"],
+  "validationRules": ["source citations"],
+  "reviewGateIds": ["brand-review", "editorial-review", "accessibility-review"],
+  "exportTargets": [{ "format": "docx", "purpose": "editable handoff" }, { "format": "pdf", "purpose": "distribution" }]
+}

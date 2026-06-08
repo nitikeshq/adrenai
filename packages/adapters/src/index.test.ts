@@ -1,5 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { generateAgentArtifacts } from "./index.js";
+import type { DeliverablePlan } from "@adrenai/domain";
+import type { DeliverableRenderAdapter } from "./index.js";
+import { assertAdapterSupportsPlan, generateAgentArtifacts } from "./index.js";
 
 const context = {
   recommendation: {
@@ -51,5 +53,40 @@ describe("generateAgentArtifacts", () => {
     const artifacts = generateAgentArtifacts(["generic", "codex"], context);
 
     expect(artifacts.map(({ path }) => path)).toEqual(["AGENTS.md"]);
+  });
+
+  it("keeps format-neutral planning separate from rendering adapters", async () => {
+    const plan: DeliverablePlan = {
+      schemaVersion: 1, kind: "document", title: "Plan",
+      templateId: "document/standard", brandTokens: { primary: "#123456" },
+      sections: [{ id: "summary", title: "Summary", content: ["Approved content."] }],
+      accessibilityRequirements: ["accessible headings"],
+      validationRules: ["source review"],
+      reviewGateIds: ["accessibility-review"],
+      exportTargets: [{ format: "docx", purpose: "editable handoff" }],
+    };
+    const adapter: DeliverableRenderAdapter<"docx"> = {
+      format: "docx",
+      supportedKinds: ["document"],
+      render: async ({ plan: input }) => ({ format: "docx", mediaType: "application/vnd.openxmlformats-officedocument.wordprocessingml.document", bytes: new TextEncoder().encode(input.title) }),
+    };
+    const approved = { plan, approvedGateIds: ["accessibility-review"], approvedBy: "reviewer" };
+    expect(() => assertAdapterSupportsPlan(adapter, approved)).not.toThrow();
+    expect(new TextDecoder().decode((await adapter.render(approved)).bytes)).toBe("Plan");
+  });
+
+  it("rejects unsupported plan kinds and unapproved export targets", () => {
+    const adapter: DeliverableRenderAdapter<"pptx"> = {
+      format: "pptx", supportedKinds: ["presentation"],
+      render: async () => ({ format: "pptx", mediaType: "application/pptx", bytes: new Uint8Array() }),
+    };
+    const plan: DeliverablePlan = {
+      schemaVersion: 1, kind: "poster", title: "Poster", templateId: "poster/standard",
+      brandTokens: {}, sections: [], accessibilityRequirements: [], validationRules: [],
+      reviewGateIds: [], exportTargets: [{ format: "pdf", purpose: "print" }],
+    };
+    const approved = { plan, approvedGateIds: [], approvedBy: "reviewer" };
+    expect(() => assertAdapterSupportsPlan(adapter, approved)).toThrow("does not support poster");
+    expect(() => assertAdapterSupportsPlan(adapter, { ...approved, approvedBy: "" })).toThrow("missing required approval evidence");
   });
 });

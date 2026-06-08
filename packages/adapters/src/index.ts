@@ -1,5 +1,8 @@
 import type {
   AgentId,
+  ApprovedDeliverablePlan,
+  DeliverableFormat,
+  DeliverableKind,
   GeneratedArtifact,
   PackResolution,
   RepositoryRecommendation,
@@ -13,6 +16,35 @@ export interface AgentGenerationContext {
 export interface AgentAdapter {
   id: AgentId;
   generate(context: AgentGenerationContext): GeneratedArtifact[];
+}
+
+export interface RenderedDeliverable<F extends DeliverableFormat = DeliverableFormat> {
+  format: F;
+  mediaType: string;
+  bytes: Uint8Array;
+}
+
+/** Rendering adapters consume approved plans; they do not own planning decisions. */
+export interface DeliverableRenderAdapter<F extends DeliverableFormat = DeliverableFormat> {
+  readonly format: F;
+  readonly supportedKinds: readonly DeliverableKind[];
+  render(approved: ApprovedDeliverablePlan): Promise<RenderedDeliverable<F>>;
+}
+
+export function assertAdapterSupportsPlan(
+  adapter: DeliverableRenderAdapter,
+  approved: ApprovedDeliverablePlan,
+): void {
+  const { plan } = approved;
+  if (!approved.approvedBy.trim() || plan.reviewGateIds.some((gate) => !approved.approvedGateIds.includes(gate))) {
+    throw new Error(`${plan.kind} plan is missing required approval evidence.`);
+  }
+  if (!adapter.supportedKinds.includes(plan.kind)) {
+    throw new Error(`${adapter.format} adapter does not support ${plan.kind} plans.`);
+  }
+  if (!plan.exportTargets.some(({ format }) => format === adapter.format)) {
+    throw new Error(`${plan.kind} plan does not approve ${adapter.format} export.`);
+  }
 }
 
 function guidanceDocument(
