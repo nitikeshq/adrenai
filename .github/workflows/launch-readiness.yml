@@ -28,6 +28,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Validate documentation links
+        id: links
+        continue-on-error: true
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --exclude-path node_modules
+            --exclude-path dist
+            --exclude '^https://github.com/nitikeshq/adrenai/actions/workflows/ci\.yml'
+            --exclude '^https://www\.npmjs\.com/package/adrenai$'
+            README.md
+            docs
+            .github
+          fail: true
+      - name: Retry documentation links after transient failure
+        if: steps.links.outcome == 'failure'
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
