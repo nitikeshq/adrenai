@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "layers": [
+    {
+      "id": "adrenai/universal-safety",
+      "version": "1.0.0",
+      "scope": "universal",
+      "rules": [
+        {
+          "id": "adrenai/protect-secrets",
+          "key": "safety.secrets",
+          "statement": "Never expose or persist secrets in generated deliverables.",
+          "enforcement": "enforceable",
+          "overrideAllowed": false,
+          "mandatoryGateIds": ["secret-scan"]
+        },
+        {
+          "id": "adrenai/evidence-claims",
+          "key": "quality.evidence",
+          "statement": "Distinguish verified facts, user decisions, and suggestions.",
+          "enforcement": "enforceable",
+          "overrideAllowed": false,
+          "mandatoryGateIds": []
+        }
+      ]
+    },
+    {
+      "id": "adrenai/software-baseline",
+      "version": "1.0.0",
+      "scope": "category",
+      "target": "software",
+      "rules": [
+        {
+          "id": "adrenai/software-tests",
+          "key": "quality.category-gate",
+          "statement": "Run configured tests before software completion.",
+          "enforcement": "enforceable",
+          "overrideAllowed": false,
+          "mandatoryGateIds": ["configured-tests"]
+        }
+      ]
+    },
+    {
+      "id": "adrenai/design-baseline",
+      "version": "1.0.0",
+      "scope": "category",
+      "target": "design",
+      "rules": [
+        {
+          "id": "adrenai/design-accessibility",
+          "key": "quality.category-gate",
+          "statement": "Review accessibility and required interaction states.",
+          "enforcement": "enforceable",
+          "overrideAllowed": false,
+          "mandatoryGateIds": ["accessibility-review"]
+        }
+      ]
+    },
+    {
+      "id": "adrenai/content-seo-baseline",
+      "version": "1.0.0",
+      "scope": "category",
+      "target": "content-seo",
+      "rules": [
+        {
+          "id": "adrenai/content-claims",
+          "key": "quality.category-gate",
+          "statement": "Verify factual claims and avoid unsupported SEO promises.",
+          "enforcement": "enforceable",
+          "overrideAllowed": false,
+          "mandatoryGateIds": ["claims-review"]
+        }
+      ]
+    },
+    {
+      "id": "adrenai/marketing-baseline",
+      "version": "1.0.0",
+      "scope": "category",
+      "target": "marketing",
+      "rules": [
+        {
+          "id": "adrenai/marketing-consent",
+          "key": "quality.category-gate",
+          "statement": "Review consent, claims, and channel compliance before delivery.",
+          "enforcement": "enforceable",
+          "overrideAllowed": false,
+          "mandatoryGateIds": ["marketing-compliance-review"]
+        }
+      ]
+    },
+    {
+      "id": "adrenai/office-baseline",
+      "version": "1.0.0",
+      "scope": "category",
+      "target": "office-documents",
+      "rules": [
+        {
+          "id": "adrenai/office-validation",
+          "key": "quality.category-gate",
+          "statement": "Validate formulas, links, accessibility, and export format.",
+          "enforcement": "enforceable",
+          "overrideAllowed": false,
+          "mandatoryGateIds": ["office-deliverable-review"]
+        }
+      ]
+    }
+  ]
+}
