@@ -1,6 +1,6 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
-import { createWorkflowState, nextReadyPhases, planWorkflow, transitionWorkflowPhase } from "@adrenai/domain";
+import { createWorkflowState, nextReadyPhases, planWorkflow, recordWorkflowGateResult, transitionWorkflowPhase } from "@adrenai/domain";
 import { validateWorkflowManifest } from "./index.js";
 
 const reference = JSON.parse(
@@ -54,5 +54,47 @@ describe("workflow manifests and planning", () => {
       phases: [reference.phases[0], { ...reference.phases[0], retryLimit: 99 }],
     });
     expect(result.valid).toBe(false);
+  });
+
+  it("blocks completion until every declared gate has passing persisted evidence", () => {
+    const workflow = validateWorkflowManifest(reference).workflow!;
+    let state = createWorkflowState(workflow, { "user-facing": "no" });
+    state = transitionWorkflowPhase(workflow, state, "brief", "start");
+    state = transitionWorkflowPhase(workflow, state, "brief", "request-approval");
+    state = transitionWorkflowPhase(workflow, state, "brief", "approve");
+    state = transitionWorkflowPhase(workflow, state, "brief", "complete");
+    state = transitionWorkflowPhase(workflow, state, "implement", "start");
+    expect(() => transitionWorkflowPhase(workflow, state, "implement", "complete"))
+      .toThrow("requires passing gate evidence");
+    state = recordWorkflowGateResult(workflow, state, {
+      phaseId: "implement", gateId: "configured-typecheck", status: "failed",
+      evidence: [{ path: "typecheck.log", reason: "failed result" }],
+    });
+    expect(() => transitionWorkflowPhase(workflow, state, "implement", "complete"))
+      .toThrow("configured-typecheck");
+    state = recordWorkflowGateResult(workflow, state, {
+      phaseId: "implement", gateId: "configured-typecheck", status: "passed",
+      evidence: [{ path: "typecheck.log", reason: "exit code 0" }],
+    });
+    expect(transitionWorkflowPhase(workflow, state, "implement", "complete").phases
+      .find(({ phaseId }) => phaseId === "implement")?.status).toBe("completed");
+  });
+
+  it("rejects undeclared or evidence-free gates and clears stale evidence on retry", () => {
+    const workflow = validateWorkflowManifest(reference).workflow!;
+    let state = createWorkflowState(workflow, { "user-facing": "no" });
+    expect(() => recordWorkflowGateResult(workflow, state, {
+      phaseId: "implement", gateId: "undeclared", status: "passed", evidence: [{ path: "x", reason: "x" }],
+    })).toThrow("not declared");
+    expect(() => recordWorkflowGateResult(workflow, state, {
+      phaseId: "implement", gateId: "configured-typecheck", status: "passed", evidence: [],
+    })).toThrow("requires evidence");
+    state = recordWorkflowGateResult(workflow, state, {
+      phaseId: "implement", gateId: "configured-typecheck", status: "passed",
+      evidence: [{ path: "typecheck.log", reason: "exit code 0" }],
+    });
+    state.phases.find(({ phaseId }) => phaseId === "implement")!.status = "failed";
+    state = transitionWorkflowPhase(workflow, state, "implement", "retry");
+    expect(state.gateResults).toEqual([]);
   });
 });

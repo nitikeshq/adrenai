@@ -12,6 +12,11 @@ ready phases are derived only after their dependencies complete or skip.
 Workflow state is stored under `.adrenai/workflows/`. Persistence rejects
 secret-like keys and uses repository-contained writes. States may be marked
 paused and resumed without losing decisions, attempts, or phase status.
+Each declared gate must record a passing result with evidence before its phase
+can complete. Failed or missing gates block completion, and retrying a phase
+clears its prior gate results so changed work must be validated again. Older
+saved state without `gateResults` remains readable and behaves as having no
+passing gates.
 
 The reference manifest at `catalog/workflows/software-development.json` shows
 approval, branching, optional phases, retries, outputs, and quality gates.
