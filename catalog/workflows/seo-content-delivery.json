@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "adrenai/seo-content-delivery",
+  "version": "1.0.0",
+  "title": "SEO and Content Delivery",
+  "phases": [
+    { "id": "research", "title": "Research audience, intent, sources, and technical context", "dependsOn": [], "inputs": ["offline-content-brief"], "outputs": ["research-ledger"], "gateIds": ["source-citation-review", "privacy-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "outline", "title": "Approve scope, outline, and measurement plan", "dependsOn": ["research"], "inputs": ["research-ledger"], "outputs": ["approved-outline"], "gateIds": ["originality-plan", "claims-plan"], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "draft", "title": "Create the deterministic deliverable draft", "dependsOn": ["outline"], "inputs": ["approved-outline"], "outputs": ["content-draft"], "gateIds": [], "approvalRequired": false, "optional": false, "retryLimit": 2 },
+    { "id": "review", "title": "Review evidence, originality, claims, and accessibility", "dependsOn": ["draft"], "inputs": ["content-draft", "research-ledger"], "outputs": ["reviewed-content"], "gateIds": ["source-citation-review", "originality-review", "claims-review", "accessibility-review"], "approvalRequired": true, "optional": false, "retryLimit": 2 },
+    { "id": "deliver", "title": "Approve publication-ready deliverable and measurement baseline", "dependsOn": ["review"], "inputs": ["reviewed-content"], "outputs": ["content-deliverable", "measurement-baseline"], "gateIds": ["deliverable-review", "measurement-plan-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 }
+  ]
+}

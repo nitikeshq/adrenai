@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "adrenai/email-campaign",
+  "version": "1.0.0",
+  "title": "Permission-Based Email Campaign",
+  "phases": [
+    { "id": "brief", "title": "Approve audience, permission basis, objective, and offer", "dependsOn": [], "inputs": ["offline-campaign-brief"], "outputs": ["approved-campaign-brief"], "gateIds": ["permission-review", "privacy-review", "claims-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "draft", "title": "Draft accessible email and plain-text alternative", "dependsOn": ["brief"], "inputs": ["approved-campaign-brief"], "outputs": ["campaign-draft"], "gateIds": [], "approvalRequired": false, "optional": false, "retryLimit": 2 },
+    { "id": "compliance", "title": "Review identity, privacy, accessibility, and unsubscribe behavior", "dependsOn": ["draft"], "inputs": ["campaign-draft"], "outputs": ["compliant-campaign"], "gateIds": ["unsubscribe-review", "compliance-review", "accessibility-review", "privacy-review"], "approvalRequired": true, "optional": false, "retryLimit": 2 },
+    { "id": "delivery", "title": "Approve delivery and measurement plan", "dependsOn": ["compliance"], "inputs": ["compliant-campaign"], "outputs": ["campaign-deliverable", "measurement-plan"], "gateIds": ["deliverability-review", "measurement-plan-review"], "approvalRequired": true, "optional": false, "retryLimit": 1 },
+    { "id": "retrospective", "title": "Review campaign outcomes without dark patterns", "dependsOn": ["delivery"], "inputs": ["measurement-plan"], "outputs": ["campaign-retrospective"], "gateIds": ["campaign-review"], "approvalRequired": false, "optional": false, "retryLimit": 1 }
+  ]
+}
