@@ -41,4 +41,12 @@ describe("parseArguments", () => {
       json: true,
     });
   });
+
+  it("accepts the interactive TUI command and JSON snapshot parity", () => {
+    expect(parseArguments(["tui", "./repo", "--json"])).toMatchObject({
+      command: "tui",
+      path: "./repo",
+      json: true,
+    });
+  });
 });
