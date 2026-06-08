@@ -9,6 +9,7 @@ import type {
 } from "@adrenai/domain";
 
 export { validateTaxonomyCatalog } from "./taxonomy.js";
+export { validatePolicyCatalog } from "./policy.js";
 
 const AGENTS = new Set<AgentId>([
   "claude-code",

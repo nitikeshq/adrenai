@@ -6,6 +6,9 @@ coding agents.
 
 The target broader-platform flow, state model, approvals, trust boundaries, and
 category examples are defined in the [process blueprint](process-blueprint.md).
+Taxonomy and policy extension contracts are documented in
+[taxonomy authoring](taxonomy-authoring.md) and
+[policy authoring](policy-authoring.md).
 
 ## Design goals
 

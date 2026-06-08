@@ -163,4 +163,5 @@ export interface PackResolution {
 }
 
 export * from "./checks.js";
+export * from "./policy.js";
 export * from "./taxonomy.js";
