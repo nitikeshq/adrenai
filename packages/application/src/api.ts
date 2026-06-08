@@ -1,4 +1,5 @@
 import type { Diagnostic } from "@adrenai/domain";
+import { createHash } from "node:crypto";
 
 export type ApplicationOperation =
   | "inspect"
@@ -23,6 +24,7 @@ export interface CancellationSignal {
 
 export interface ApprovalRequest {
   id: string;
+  fingerprint?: string;
   operation: ApplicationOperation;
   summary: string;
   effectPaths: string[];
@@ -31,6 +33,7 @@ export interface ApprovalRequest {
 
 export interface ApprovalGrant {
   requestId: string;
+  fingerprint: string;
   approved: true;
 }
 
@@ -72,6 +75,37 @@ function cancellationDiagnostic(operation: ApplicationOperation): Diagnostic {
   };
 }
 
+function canonicalJson(value: unknown): string {
+  if (Array.isArray(value)) return `[${value.map(canonicalJson).join(",")}]`;
+  if (value && typeof value === "object") {
+    return `{${Object.entries(value)
+      .sort(([left], [right]) => left.localeCompare(right))
+      .map(([key, item]) => `${JSON.stringify(key)}:${canonicalJson(item)}`)
+      .join(",")}}`;
+  }
+  return JSON.stringify(value) ?? "null";
+}
+
+export function fingerprintEffectPlan(
+  root: string,
+  input: unknown,
+  approval: ApprovalRequest,
+): string {
+  return createHash("sha256").update(canonicalJson({
+    root,
+    input,
+    id: approval.id,
+    operation: approval.operation,
+    summary: approval.summary,
+    effectPaths: approval.effectPaths,
+    commands: approval.commands,
+  })).digest("hex");
+}
+
+function bindApproval(root: string, input: unknown, approval: ApprovalRequest): ApprovalRequest {
+  return { ...approval, fingerprint: fingerprintEffectPlan(root, input, approval) };
+}
+
 export class AdrenaiApplicationApi {
   constructor(private readonly services: ApplicationApiServices) {}
 
@@ -108,13 +142,14 @@ export class AdrenaiApplicationApi {
       const planned = result.value as { value: unknown; approval?: ApprovalRequest } | undefined;
       if (!planned) return result;
       if (planned.approval) {
+        const approval = bindApproval(request.root, request.input, planned.approval);
         const event: ApplicationEvent = {
           operation: "plan",
           stage: "approval-required",
-          message: planned.approval.summary,
+          message: approval.summary,
         };
         request.onEvent?.(event);
-        return { ...result, value: planned.value, approval: planned.approval, events: [...result.events, event] };
+        return { ...result, value: planned.value, approval, events: [...result.events, event] };
       }
       return { ...result, value: planned.value };
     });
@@ -125,11 +160,16 @@ export class AdrenaiApplicationApi {
       return this.run("execute", request, () => this.services.execute(request.root, request.input));
     }
     const planned = await this.services.plan(request.root, request.input);
-    if (!planned.approval || request.approval?.requestId !== planned.approval.id) {
+    const approval = planned.approval
+      ? bindApproval(request.root, request.input, planned.approval)
+      : undefined;
+    if (!approval ||
+      request.approval?.requestId !== approval.id ||
+      request.approval.fingerprint !== approval.fingerprint) {
       const event: ApplicationEvent = {
         operation: "execute",
         stage: "approval-required",
-        message: planned.approval?.summary ?? "Execution requires an approved effect plan.",
+        message: approval?.summary ?? "Execution requires an approved effect plan.",
       };
       request.onEvent?.(event);
       return {
@@ -140,7 +180,7 @@ export class AdrenaiApplicationApi {
           evidence: [],
         }],
         events: [event],
-        approval: planned.approval,
+        approval,
         cancelled: false,
       };
     }

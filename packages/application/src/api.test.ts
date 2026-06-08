@@ -32,7 +32,9 @@ describe("UI-neutral application API", () => {
       .toEqual({ files: 4 });
     expect((await api.suggest({ root: "/project" })).value).toEqual({ strategies: ["reliable"] });
     expect((await api.select({ root: "/project" })).value).toEqual({ selected: ["reliable"] });
-    expect((await api.plan({ root: "/project" })).approval?.id).toBe("approval-1");
+    const plan = await api.plan({ root: "/project" });
+    expect(plan.approval?.id).toBe("approval-1");
+    expect(plan.approval?.fingerprint).toMatch(/^[a-f0-9]{64}$/);
     expect((await api.resume({ root: "/project" })).value).toEqual({ session: "active" });
     expect((await api.validate({ root: "/project" })).value).toEqual({ valid: true });
     expect(adapters.validate).toHaveBeenCalledTimes(1);
@@ -43,14 +45,39 @@ describe("UI-neutral application API", () => {
     const adapters = services();
     const api = new AdrenaiApplicationApi(adapters);
     const blocked = await api.execute({ root: "/project" });
+    const plan = await api.plan({ root: "/project" });
     const approved = await api.execute({
       root: "/project",
-      approval: { requestId: "approval-1", approved: true },
+      approval: { requestId: "approval-1", fingerprint: plan.approval!.fingerprint!, approved: true },
     });
 
     expect(blocked.diagnostics[0]?.id).toBe("application/approval-required");
     expect(adapters.execute).toHaveBeenCalledTimes(1);
     expect(approved.value).toEqual({ written: [".adrenai/generated.json"] });
+  });
+
+  it("rejects approvals when effects, commands, or input change after approval", async () => {
+    const adapters = services();
+    const api = new AdrenaiApplicationApi(adapters);
+    const plan = await api.plan({ root: "/project", input: { mode: "safe" } });
+    const grant = { requestId: "approval-1", fingerprint: plan.approval!.fingerprint!, approved: true as const };
+
+    const changedInput = await api.execute({ root: "/project", input: { mode: "unsafe" }, approval: grant });
+    vi.mocked(adapters.plan).mockResolvedValueOnce({
+      value: {},
+      approval: { id: "approval-1", operation: "execute", summary: "Write managed guidance.", effectPaths: ["other.json"], commands: [] },
+    });
+    const changedPath = await api.execute({ root: "/project", input: { mode: "safe" }, approval: grant });
+    vi.mocked(adapters.plan).mockResolvedValueOnce({
+      value: {},
+      approval: { id: "approval-1", operation: "execute", summary: "Write managed guidance.", effectPaths: [".adrenai/generated.json"], commands: ["dangerous-command"] },
+    });
+    const changedCommand = await api.execute({ root: "/project", input: { mode: "safe" }, approval: grant });
+
+    expect([changedInput, changedPath, changedCommand].every(({ diagnostics }) =>
+      diagnostics[0]?.id === "application/approval-required",
+    )).toBe(true);
+    expect(adapters.execute).not.toHaveBeenCalled();
   });
 
   it("supports cancellation without invoking trusted services", async () => {
