@@ -39,4 +39,5 @@ jobs:
       - run: node dist/main.js packs
       - run: node dist/main.js inspect examples/fixtures/typescript-codex --json
       - run: node scripts/smoke-test.mjs
+      - run: node scripts/demo-smoke-test.mjs
       - run: node scripts/performance-test.mjs

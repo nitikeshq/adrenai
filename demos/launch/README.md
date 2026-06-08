@@ -1,5 +1,16 @@
 # AdrenAI Launch Demo
 
+## Automated smoke test
+
+The cross-platform smoke test copies the disposable `before` fixture, exercises
+the launch workflow through the bundled CLI, and verifies managed-file drift:
+
+```bash
+corepack pnpm demo:smoke
+```
+
+It does not modify either checked-in fixture.
+
 This demo shows AdrenAI turning an existing, unconfigured repository into a
 portable AI-agent setup without changing application source code.
 
