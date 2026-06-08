@@ -11,6 +11,7 @@ import type {
   Pack,
   PackResolution,
   ProjectTechnology,
+  ProjectSynthesisInput,
   RepositoryInspection,
   RepositoryRecommendation,
 } from "@adrenai/domain";
@@ -842,6 +843,44 @@ export async function doctorRepository(
   };
 }
 
+export async function collectProjectSynthesisInput(
+  inspection: RepositoryInspection,
+  fileSystem: RepositoryFileSystem,
+): Promise<ProjectSynthesisInput> {
+  const doctor = await doctorRepository(inspection, fileSystem);
+  const files = (await fileSystem.listFiles(inspection.root)).map(normalizePath);
+  const projectDocuments = files.filter((path) =>
+    /^(?:README|REQUIREMENTS|ARCHITECTURE)\.md$/i.test(path) ||
+    /^docs\/.+\.md$/i.test(path),
+  );
+  const requirements = [...doctor.requirements];
+  for (const path of projectDocuments) {
+    try {
+      requirements.push(
+        ...parseInstructionRequirements(path, await fileSystem.readText(inspection.root, path)),
+      );
+    } catch {
+      doctor.diagnostics.push({
+        id: "synthesis/unreadable-project-document",
+        severity: "warning",
+        message: `Unable to read project document ${path}.`,
+        evidence: [{ path, reason: "read failed" }],
+      });
+    }
+  }
+  const unique = new Map(
+    requirements.map((requirement) => [
+      `${requirement.source}:${requirement.line}:${requirement.polarity}:${requirement.normalized}`,
+      requirement,
+    ]),
+  );
+  return {
+    inspection,
+    requirements: [...unique.values()],
+    diagnostics: doctor.diagnostics,
+  };
+}
+
 export async function loadPackCatalog(
   root: string,
   fileSystem: CatalogFileSystem,
@@ -1014,4 +1053,5 @@ export function resolveRecommendedPacks(
 export * from "./checks.js";
 export * from "./inspection-hardening.js";
 export * from "./selection.js";
+export * from "./synthesis.js";
 export * from "./sync.js";
