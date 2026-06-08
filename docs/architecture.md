@@ -9,6 +9,8 @@ category examples are defined in the [process blueprint](process-blueprint.md).
 Taxonomy and policy extension contracts are documented in
 [taxonomy authoring](taxonomy-authoring.md) and
 [policy authoring](policy-authoring.md).
+The UI-neutral progressive-discovery behavior is documented in
+[guided selection](guided-selection.md).
 
 ## Design goals
 
