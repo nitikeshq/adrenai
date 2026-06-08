@@ -1,4 +1,4 @@
-import type { Diagnostic } from "./index.js";
+import type { Diagnostic, Evidence } from "./index.js";
 
 export type WorkflowPhaseStatus =
   | "pending"
@@ -43,6 +43,13 @@ export interface WorkflowPhaseState {
   approved: boolean;
 }
 
+export interface WorkflowGateResult {
+  phaseId: string;
+  gateId: string;
+  status: "passed" | "failed";
+  evidence: Evidence[];
+}
+
 export interface WorkflowState {
   schemaVersion: 1;
   workflowId: string;
@@ -50,6 +57,8 @@ export interface WorkflowState {
   status: "planned" | "active" | "paused" | "completed" | "failed";
   decisions: Record<string, string>;
   phases: WorkflowPhaseState[];
+  /** Optional for backward compatibility with workflow state created before gate evidence. */
+  gateResults?: WorkflowGateResult[];
 }
 
 export interface WorkflowPlan {
@@ -130,6 +139,30 @@ export function createWorkflowState(
       attempts: 0,
       approved: false,
     })),
+    gateResults: [],
+  };
+}
+
+export function recordWorkflowGateResult(
+  workflow: WorkflowManifest,
+  state: WorkflowState,
+  result: WorkflowGateResult,
+): WorkflowState {
+  const phase = workflow.phases.find(({ id }) => id === result.phaseId);
+  if (!phase) throw new Error(`Unknown workflow phase ${result.phaseId}.`);
+  if (!phase.gateIds.includes(result.gateId)) {
+    throw new Error(`Gate ${result.gateId} is not declared by phase ${result.phaseId}.`);
+  }
+  if (result.evidence.length === 0) {
+    throw new Error(`Gate ${result.gateId} requires evidence.`);
+  }
+  return {
+    ...state,
+    gateResults: [
+      ...(state.gateResults ?? []).filter(({ phaseId, gateId }) =>
+        phaseId !== result.phaseId || gateId !== result.gateId),
+      { ...result, evidence: result.evidence.map((item) => ({ ...item })) },
+    ],
   };
 }
 
@@ -190,6 +223,15 @@ export function transitionWorkflowPhase(
   if (action === "complete" && phase.approvalRequired && !current.approved) {
     throw new Error(`Phase ${phaseId} requires approval before completion.`);
   }
+  if (action === "complete") {
+    const passed = new Set((state.gateResults ?? [])
+      .filter((result) => result.phaseId === phaseId && result.status === "passed" && result.evidence.length > 0)
+      .map(({ gateId }) => gateId));
+    const missing = phase.gateIds.filter((gateId) => !passed.has(gateId));
+    if (missing.length > 0) {
+      throw new Error(`Phase ${phaseId} requires passing gate evidence for: ${missing.join(", ")}.`);
+    }
+  }
   const statusByAction: Record<WorkflowPhaseAction, WorkflowPhaseStatus> = {
     start: "active",
     "request-approval": "awaiting-approval",
@@ -215,5 +257,8 @@ export function transitionWorkflowPhase(
     ...state,
     status: completed ? "completed" : action === "pause" ? "paused" : "active",
     phases,
+    gateResults: action === "retry"
+      ? (state.gateResults ?? []).filter((result) => result.phaseId !== phaseId)
+      : state.gateResults,
   };
 }
