@@ -10,6 +10,7 @@ export type CommandName =
   | "packs"
   | "recommend"
   | "sync"
+  | "tui"
   | "validate";
 
 export interface ParsedArguments {
@@ -33,6 +34,7 @@ const COMMANDS = new Set<CommandName>([
   "packs",
   "recommend",
   "sync",
+  "tui",
   "validate",
 ]);
 const AGENTS = new Set<AgentId>([

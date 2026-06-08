@@ -41,6 +41,7 @@ import {
   formatSynchronizationResult,
 } from "./presentation.js";
 import { parseArguments } from "./arguments.js";
+import { runInteractiveTui, type TuiModel } from "./tui.js";
 
 function printHelp(): void {
   console.log(`AdrenAI
@@ -56,6 +57,7 @@ Usage:
   adrenai validate [path] [--json]
   adrenai sync [path] [--write] [--agents=codex,claude-code,cursor]
   adrenai check [path] [--run] [--json]
+  adrenai tui [path] [--json]
   adrenai --help
 `);
 }
@@ -140,6 +142,54 @@ async function main(): Promise<void> {
       resolvedPacks: resolution.resolved.map(({ id }) => id),
     };
     console.log(parsed.json ? JSON.stringify(summary, null, 2) : formatOnboarding(summary));
+    return;
+  }
+  if (command === "tui") {
+    const { recommendation, resolution } = await resolveSetup();
+    const artifacts = generateManagedSetup(inspection, recommendation, resolution, hasher);
+    const recommendationById = new Map(
+      recommendation.recommendations.map((item) => [item.id, item]),
+    );
+    const model: TuiModel = {
+      screen: "context",
+      query: "",
+      cursor: 0,
+      selectedIds: resolution.requested,
+      cancelled: false,
+      approvalRequested: false,
+      contextLines: [
+        `Repository: ${inspection.root}`,
+        `Technologies: ${inspection.technologies.map(({ id }) => id).join(", ") || "none"}`,
+        `Agents: ${inspection.agents.map(({ agent }) => agent).join(", ") || "none"}`,
+        `Profile: ${recommendation.profile}`,
+      ],
+      strategies: resolution.resolved.map((pack) => ({
+        id: pack.id,
+        title: pack.title,
+        category: pack.type,
+        confidence: recommendationById.get(pack.id)?.confidence ?? "medium",
+        reasons: [recommendationById.get(pack.id)?.reason ?? pack.description],
+        conflicts: pack.conflicts,
+        prerequisites: pack.requires,
+        outputs: pack.checks,
+      })),
+      questionLines: [
+        "No material unresolved questions for the current deterministic recommendation.",
+      ],
+      workflowLines: [
+        "1. Review detected context and suggested strategies",
+        "2. Review generated guidance and required gates",
+        "3. Approve effects through sync/apply",
+        `Gates: ${resolution.resolved.flatMap(({ checks }) => checks).join(", ") || "none"}`,
+      ],
+      fileChangeLines: artifacts.map(({ path }) => `create or synchronize ${path}`),
+      diagnostics: resolution.diagnostics,
+    };
+    if (parsed.json) {
+      console.log(JSON.stringify(model, null, 2));
+    } else {
+      await runInteractiveTui(model);
+    }
     return;
   }
   if (command === "apply") {

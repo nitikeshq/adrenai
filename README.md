@@ -70,6 +70,7 @@ adrenai doctor [path] [--json]
 adrenai validate [path] [--json]
 adrenai drift [path] [--json]
 adrenai check [path] [--run] [--json]
+adrenai tui [path] [--json]
 adrenai packs [--json]
 ```
 
