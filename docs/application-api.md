@@ -7,7 +7,9 @@ policy, workflow, approval, filesystem, or command-execution rules.
 
 Every operation returns structured diagnostics and events. Events describe
 start, progress, approval requirements, completion, cancellation, or failure.
-Execution requires an approval grant matching the current effect plan.
+Execution requires an approval grant matching the current effect plan. Grants
+carry a deterministic SHA-256 fingerprint bound to the request root, input,
+operation, summary, effect paths, and commands. Any change requires new approval.
 Cancellation is checked before trusted services are invoked.
 
 Filesystem writes, path containment, symlink checks, secret handling, and
