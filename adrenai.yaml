@@ -1,0 +1,13 @@
+version: 1
+profile: "TypeScript project baseline"
+mode: portable
+selected_packs:
+  - governance/synchronize-agent-guidance
+  - architecture/existing-conventions
+  - development/typescript-baseline
+  - testing/use-existing-test-tools
+  - operations/preserve-existing-workflows
+  - security/secrets-protection
+agents:
+  targets:
+    - generic

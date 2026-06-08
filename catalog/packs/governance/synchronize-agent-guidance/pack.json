@@ -1,0 +1,17 @@
+{
+  "id": "governance/synchronize-agent-guidance",
+  "version": "0.1.0",
+  "type": "governance",
+  "title": "Synchronize Agent Guidance",
+  "description": "Keeps essential requirements aligned across detected agent configurations.",
+  "appliesWhen": {},
+  "requires": [],
+  "conflicts": [
+    "governance/portable-agent-baseline"
+  ],
+  "guidance": [
+    "Preserve user-authored agent instructions.",
+    "Surface conflicts before proposing synchronization."
+  ],
+  "checks": []
+}

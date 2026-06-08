@@ -1,0 +1,16 @@
+{
+  "id": "governance/portable-agent-baseline",
+  "version": "0.1.0",
+  "type": "governance",
+  "title": "Portable Agent Baseline",
+  "description": "Creates small shared instructions that remain useful across AI coding agents.",
+  "appliesWhen": {},
+  "requires": [],
+  "conflicts": [],
+  "guidance": [
+    "Understand existing code and instructions before editing.",
+    "Keep changes scoped to the requested outcome.",
+    "Never claim checks passed unless they were run."
+  ],
+  "checks": []
+}

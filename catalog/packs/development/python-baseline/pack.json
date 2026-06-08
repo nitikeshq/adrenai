@@ -1,0 +1,23 @@
+{
+  "id": "development/python-baseline",
+  "version": "0.1.0",
+  "type": "development",
+  "title": "Python Baseline",
+  "description": "Provides focused development guidance for Python repositories.",
+  "appliesWhen": {
+    "technologies": [
+      "python"
+    ]
+  },
+  "requires": [
+    "architecture/existing-conventions"
+  ],
+  "conflicts": [],
+  "guidance": [
+    "Preserve the repository's configured Python conventions.",
+    "Use explicit error handling at external boundaries."
+  ],
+  "checks": [
+    "configured-python-checks"
+  ]
+}

@@ -1,0 +1,38 @@
+name: Prepare Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: read
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10.0.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+          registry-url: https://registry.npmjs.org
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check
+      - run: pnpm test
+      - run: pnpm audit --audit-level high
+      - run: pnpm build
+      - run: node scripts/validate-release.mjs
+      - run: node scripts/prepare-release.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: npm-packages-${{ github.sha }}
+          path: artifacts/npm/*.tgz
+          if-no-files-found: error
+          retention-days: 14

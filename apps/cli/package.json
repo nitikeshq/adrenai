@@ -1,0 +1,23 @@
+{
+  "name": "@adrenai/cli",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Repository-aware configuration for AI coding agents.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "bin": {
+    "adrenai": "./dist/main.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {
+    "@adrenai/application": "workspace:*",
+    "@adrenai/domain": "workspace:*",
+    "@adrenai/infrastructure": "workspace:*"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "@adrenai/application",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Application use cases for AdrenAI.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "files": ["dist"],
+  "exports": "./dist/index.js",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {
+    "@adrenai/adapters": "workspace:*",
+    "@adrenai/domain": "workspace:*",
+    "@adrenai/schemas": "workspace:*",
+    "yaml": "^2.8.1"
+  }
+}

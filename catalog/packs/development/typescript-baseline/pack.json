@@ -1,0 +1,23 @@
+{
+  "id": "development/typescript-baseline",
+  "version": "0.1.0",
+  "type": "development",
+  "title": "TypeScript Baseline",
+  "description": "Provides focused development guidance for TypeScript repositories.",
+  "appliesWhen": {
+    "technologies": [
+      "typescript"
+    ]
+  },
+  "requires": [
+    "architecture/existing-conventions"
+  ],
+  "conflicts": [],
+  "guidance": [
+    "Preserve strict typing.",
+    "Avoid unsafe type assertions unless justified."
+  ],
+  "checks": [
+    "configured-typecheck"
+  ]
+}

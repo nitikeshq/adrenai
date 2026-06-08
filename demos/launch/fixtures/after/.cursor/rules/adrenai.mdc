@@ -1,0 +1,7 @@
+---
+description: Repository-aware AdrenAI guidance
+alwaysApply: true
+---
+
+Follow `AGENTS.md`. Preserve existing conventions and verify changes with the
+repository's configured test and build commands.

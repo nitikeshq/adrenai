@@ -1,0 +1,17 @@
+{
+  "id": "security/secrets-protection",
+  "version": "0.1.0",
+  "type": "security",
+  "title": "Secrets Protection",
+  "description": "Establishes a minimum policy for handling secrets and sensitive configuration.",
+  "appliesWhen": {},
+  "requires": [],
+  "conflicts": [],
+  "guidance": [
+    "Never expose or commit secrets.",
+    "Use environment-specific secret management."
+  ],
+  "checks": [
+    "secret-scan"
+  ]
+}

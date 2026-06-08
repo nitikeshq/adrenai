@@ -1,0 +1,64 @@
+{
+  "name": "adrenai",
+  "version": "0.1.0",
+  "private": false,
+  "description": "Repository-aware configuration for AI coding agents.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "adrenai": "dist/main.js"
+  },
+  "files": [
+    "dist/",
+    "catalog/",
+    "docs/",
+    "CHANGELOG.md",
+    "README.md",
+    "LICENSE",
+    "SECURITY.md"
+  ],
+  "keywords": [
+    "ai-agents",
+    "cli",
+    "codex",
+    "claude-code",
+    "cursor",
+    "developer-tools"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "packageManager": "pnpm@10.0.0",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "tsc -b && tsup apps/cli/src/main.ts --format esm --target node22 --out-dir dist --clean --external yaml",
+    "check": "tsc -b --pretty false",
+    "clean": "tsc -b --clean",
+    "dev": "tsc -b && node apps/cli/dist/main.js",
+    "test": "vitest run",
+    "smoke": "corepack pnpm build && node scripts/smoke-test.mjs",
+    "performance": "corepack pnpm build && node scripts/performance-test.mjs",
+    "site:serve": "node scripts/serve-site.mjs",
+    "site:validate": "node scripts/validate-site.mjs",
+    "secret-scan": "node scripts/secret-scan.mjs",
+    "prepack": "corepack pnpm check && corepack pnpm test && corepack pnpm build",
+    "release:check": "corepack pnpm audit --audit-level=high && corepack pnpm secret-scan && corepack pnpm site:validate && corepack pnpm prepack && node scripts/validate-release.mjs && node scripts/smoke-test.mjs && node scripts/performance-test.mjs && npm pack --dry-run"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.1.8"
+  },
+  "dependencies": {
+    "yaml": "^2.8.1"
+  }
+}

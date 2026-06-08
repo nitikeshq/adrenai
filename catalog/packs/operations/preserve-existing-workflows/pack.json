@@ -1,0 +1,21 @@
+{
+  "id": "operations/preserve-existing-workflows",
+  "version": "0.1.0",
+  "type": "operations",
+  "title": "Preserve Existing CI Workflows",
+  "description": "Treats existing continuous integration workflows as the source of truth for required checks.",
+  "appliesWhen": {
+    "technologies": [
+      "github-actions"
+    ]
+  },
+  "requires": [],
+  "conflicts": [],
+  "guidance": [
+    "Inspect existing CI commands before recommending new quality gates.",
+    "Do not weaken required CI checks."
+  ],
+  "checks": [
+    "existing-ci-workflows"
+  ]
+}

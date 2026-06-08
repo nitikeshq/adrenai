@@ -1,0 +1,23 @@
+{
+  "id": "testing/use-existing-test-tools",
+  "version": "0.1.0",
+  "type": "testing",
+  "title": "Use Existing Test Tools",
+  "description": "Requires relevant tests using tools already configured by the repository.",
+  "appliesWhen": {
+    "technologies": [
+      "vitest",
+      "jest",
+      "playwright"
+    ]
+  },
+  "requires": [],
+  "conflicts": [],
+  "guidance": [
+    "Add or update tests proportional to behavioral risk.",
+    "Use existing test tools before introducing another framework."
+  ],
+  "checks": [
+    "configured-tests"
+  ]
+}

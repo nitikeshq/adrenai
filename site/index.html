@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="AdrenAI gives every AI coding agent the right project instructions, focused skills, and quality gates from one deterministic setup."
+    />
+    <meta property="og:title" content="AdrenAI - One setup. Every coding agent." />
+    <meta
+      property="og:description"
+      content="Inspect your repository, align every coding agent, and enforce the checks that matter."
+    />
+    <meta property="og:image" content="./assets/adrenai-product-hunt-cover.png" />
+    <meta name="theme-color" content="#a3ff12" />
+    <title>AdrenAI - One setup. Every coding agent.</title>
+    <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="nav">
+      <a class="brand" href="#top" aria-label="AdrenAI home">
+        <span class="mark" aria-hidden="true">A</span>
+        <span>AdrenAI</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#workflow">Workflow</a>
+        <a href="#agents">Agents</a>
+        <a href="#safety">Safety</a>
+        <a href="#workflow">Docs</a>
+      </nav>
+      <a class="button button-small" href="#launch">Try the beta</a>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> Open-source agent configuration compiler</p>
+          <h1>One setup.<br /><em>Every coding agent.</em></h1>
+          <p class="lede">
+            AdrenAI inspects your repository, recommends a minimal compatible setup,
+            generates native instructions for every coding agent, and keeps quality
+            gates aligned without requiring AI credits.
+          </p>
+          <div class="actions">
+            <button class="button command" data-copy="npx adrenai">
+              <code>npx adrenai</code><span>Copy</span>
+            </button>
+            <a class="button button-secondary" href="#workflow">See how it works</a>
+          </div>
+          <div class="proof">
+            <span>Offline-first</span><span>Deterministic</span><span>Apache-2.0</span>
+          </div>
+        </div>
+        <div class="terminal-card" aria-label="AdrenAI terminal demonstration">
+          <div class="terminal-bar"><i></i><i></i><i></i><span>adrenai onboard</span></div>
+          <div class="terminal">
+            <p><b>$</b> npx adrenai</p>
+            <p class="muted">Inspecting repository...</p>
+            <p><strong>Detected</strong></p>
+            <p><span class="ok">✓</span> Next.js + TypeScript</p>
+            <p><span class="ok">✓</span> Vitest + Playwright</p>
+            <p><span class="ok">✓</span> Codex, Claude Code, Cursor</p>
+            <p><strong>Recommended profile</strong></p>
+            <p><span class="accent">→</span> Production TypeScript baseline</p>
+            <p class="muted">5 resolved packs · 3 native agent outputs</p>
+            <p><span class="ok">✓</span> No source code will be changed</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="logos" id="agents" aria-label="Supported agents">
+        <p>Native output for the tools developers already use</p>
+        <div><span>Codex</span><span>Claude Code</span><span>Cursor</span><span>Copilot</span><span>Kiro</span><span>Gemini</span></div>
+      </section>
+
+      <section class="section" id="workflow">
+        <p class="eyebrow"><span></span> A focused workflow</p>
+        <h2>Stop rewriting the same instructions.</h2>
+        <div class="steps">
+          <article><b>01</b><h3>Inspect</h3><p>Detect frameworks, test tools, CI, agent files, conflicts, and missing safeguards locally.</p></article>
+          <article><b>02</b><h3>Recommend</h3><p>Resolve a small compatible set of reviewed packs with evidence and clear tradeoffs.</p></article>
+          <article><b>03</b><h3>Synchronize</h3><p>Generate native agent files, lock versions, protect user work, and detect future drift.</p></article>
+        </div>
+      </section>
+
+      <section class="split section" id="safety">
+        <div>
+          <p class="eyebrow"><span></span> Trust through constraints</p>
+          <h2>Guidance in prose.<br />Guarantees in checks.</h2>
+          <p class="lede">AdrenAI never silently overwrites user files or executes arbitrary pack content. Important requirements become allowlisted quality gates.</p>
+          <ul class="checklist">
+            <li>Works without an AI provider or API key</li>
+            <li>Preview-first creation and synchronization</li>
+            <li>Pack lockfiles and SHA-256 drift detection</li>
+            <li>Path and symlink protections with instruction diagnostics</li>
+          </ul>
+        </div>
+        <img src="./assets/adrenai-product-hunt-cover.png" alt="AdrenAI project configuration streams converging into one blueprint" />
+      </section>
+
+      <section class="cta section" id="launch">
+        <p class="eyebrow"><span></span> Public beta</p>
+        <h2>Give your coding agents<br />a shared operating system.</h2>
+        <button class="button command" data-copy="npx adrenai"><code>npx adrenai</code><span>Copy</span></button>
+      </section>
+    </main>
+
+    <footer><span>AdrenAI · Apache-2.0</span><span>Built for developers who use more than one agent.</span></footer>
+    <script src="./script.js"></script>
+  </body>
+</html>

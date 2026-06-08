@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "artifacts": [
+    {
+      "path": "AGENTS.md",
+      "purpose": "Codex repository guidance.",
+      "contentHash": "<generated-by-current-cli>"
+    },
+    {
+      "path": "adrenai.yaml",
+      "purpose": "Human-editable record of the selected AdrenAI profile.",
+      "contentHash": "<generated-by-current-cli>"
+    }
+  ]
+}

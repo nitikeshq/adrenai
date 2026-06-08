@@ -1,0 +1,15 @@
+{
+  "id": "architecture/existing-conventions",
+  "version": "0.1.0",
+  "type": "architecture",
+  "title": "Preserve Existing Conventions",
+  "description": "Requires understanding and preserving established repository boundaries before proposing architectural changes.",
+  "appliesWhen": {},
+  "requires": [],
+  "conflicts": [],
+  "guidance": [
+    "Understand existing architecture before editing.",
+    "Justify changes to established module boundaries."
+  ],
+  "checks": []
+}

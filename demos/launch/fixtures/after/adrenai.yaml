@@ -1,0 +1,17 @@
+version: 1
+profile: "Next.js project baseline"
+mode: portable
+selected_packs:
+  - governance/portable-agent-baseline
+  - architecture/existing-conventions
+  - development/typescript-baseline
+  - testing/use-existing-test-tools
+  - operations/preserve-existing-workflows
+  - security/secrets-protection
+agents:
+  targets:
+    - codex
+    - claude-code
+    - github-copilot
+    - cursor
+    - kiro

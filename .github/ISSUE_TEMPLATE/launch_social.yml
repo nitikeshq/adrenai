@@ -1,0 +1,74 @@
+name: Launch And Social Coordination
+description: Coordinate a release announcement, launch asset, or community campaign.
+title: "[Launch]: "
+labels: ["launch"]
+body:
+  - type: dropdown
+    id: launch_type
+    attributes:
+      label: Launch type
+      options:
+        - Product or version release
+        - Feature announcement
+        - Community milestone
+        - Documentation or content campaign
+        - Event or demonstration
+    validations:
+      required: true
+  - type: input
+    id: target_date
+    attributes:
+      label: Target date
+      description: Use an exact date and include the timezone when timing matters.
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+  - type: textarea
+    id: audience
+    attributes:
+      label: Audience and intended outcome
+      description: Identify who this is for and the action or understanding the launch should produce.
+    validations:
+      required: true
+  - type: textarea
+    id: message
+    attributes:
+      label: Core message
+      description: State the verified claim, value, and supporting evidence.
+    validations:
+      required: true
+  - type: textarea
+    id: channels
+    attributes:
+      label: Channels and assets
+      description: List planned channels, owners, copy, visuals, demos, and documentation.
+    validations:
+      required: true
+  - type: textarea
+    id: readiness
+    attributes:
+      label: Readiness checklist
+      value: |
+        - [ ] Release checks pass
+        - [ ] Documentation matches shipped behavior
+        - [ ] Claims and metrics are verified
+        - [ ] Security-sensitive details were reviewed
+        - [ ] Links and installation commands were tested
+        - [ ] Accessibility and alt text were reviewed
+        - [ ] Owners and response plan are confirmed
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Risks and rollback plan
+      description: Describe known risks, monitoring, and what will happen if the launch must be delayed or corrected.
+    validations:
+      required: true
+  - type: textarea
+    id: success
+    attributes:
+      label: Success measures
+      description: Define measurable launch outcomes and when they will be reviewed.
+    validations:
+      required: true

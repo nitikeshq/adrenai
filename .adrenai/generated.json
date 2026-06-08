@@ -1,0 +1,20 @@
+{
+  "artifacts": [
+    {
+      "contentHash": "b19b374a33ff4a6f253092d07d5d273b1cf71d2de0e71c29d95c19baa31a174e",
+      "path": "AGENTS.md",
+      "purpose": "Portable shared guidance for supported AI coding agents."
+    },
+    {
+      "contentHash": "8d15b763034e87722d434e6a2bf5dc44007fe777ac7bc0befc82c4953e92ef9d",
+      "path": "adrenai.lock.json",
+      "purpose": "Deterministic lockfile for resolved AdrenAI pack versions and content."
+    },
+    {
+      "contentHash": "0c55c604400285910512246e0dcf8fbb37c9dfaa791ab62b4e183a4543b26e31",
+      "path": "adrenai.yaml",
+      "purpose": "Human-editable record of the selected AdrenAI profile."
+    }
+  ],
+  "version": 1
+}

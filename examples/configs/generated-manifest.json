@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "artifacts": [
+    {
+      "path": "AGENTS.md",
+      "purpose": "Codex repository guidance.",
+      "contentHash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+    }
+  ]
+}

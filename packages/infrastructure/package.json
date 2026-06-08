@@ -1,0 +1,18 @@
+{
+  "name": "@adrenai/infrastructure",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Infrastructure implementations for AdrenAI.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "files": ["dist"],
+  "exports": "./dist/index.js",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {
+    "@adrenai/application": "workspace:*",
+    "@adrenai/domain": "workspace:*"
+  }
+}

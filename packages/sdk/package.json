@@ -1,0 +1,14 @@
+{
+  "name": "@adrenai/sdk",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Extension SDK for AdrenAI.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "files": ["dist"],
+  "exports": "./dist/index.js",
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  }
+}

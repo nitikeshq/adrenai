@@ -1,0 +1,42 @@
+{
+  "packs": [
+    {
+      "contentHash": "64acec320a6d3a9cecaf74177deb8eb45e519a3e9af195ba22008c853db8e8d5",
+      "id": "architecture/existing-conventions",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "44a6e07262b74bd286a9bfe1904ef9980b1fb8dbe797e32e3ec93f810831fcb7",
+      "id": "development/typescript-baseline",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "9b4deb8390050ba46f04674a3a73ea7b1c82d929959c9caf28e9ff72cd3599b0",
+      "id": "governance/synchronize-agent-guidance",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "3934bd118ed76e19e818c0c7c4b701dea86174486bdbb80104f854b6fe308c73",
+      "id": "operations/preserve-existing-workflows",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "8e3ed247b1d24d24f14f1d58506550b856de289bc0c2a229725a1a5ce7a24cc7",
+      "id": "security/secrets-protection",
+      "version": "0.1.0"
+    },
+    {
+      "contentHash": "8f22550598bc364b5d2d3cf8201672b6b28851ec99cda7d72c69478e853d3c3b",
+      "id": "testing/use-existing-test-tools",
+      "version": "0.1.0"
+    }
+  ],
+  "requested": [
+    "development/typescript-baseline",
+    "governance/synchronize-agent-guidance",
+    "operations/preserve-existing-workflows",
+    "security/secrets-protection",
+    "testing/use-existing-test-tools"
+  ],
+  "version": 1
+}

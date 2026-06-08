@@ -1,0 +1,33 @@
+title: "[Show and tell] "
+labels:
+  - discussion
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Share how you use AdrenAI, a pack or adapter you created, or a workflow the community can learn from.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What did you build or learn?
+    validations:
+      required: true
+  - type: textarea
+    id: setup
+    attributes:
+      label: Setup and workflow
+      description: Explain the repository type, agents, packs, and commands involved.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Outcome
+      description: Include measurable results, limitations, and what you would change next.
+    validations:
+      required: true
+  - type: textarea
+    id: links
+    attributes:
+      label: Relevant links
+      description: Link only to content you are authorized to share.

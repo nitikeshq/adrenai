@@ -1,0 +1,37 @@
+title: "[Idea] "
+labels:
+  - discussion
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this discussion to explore an idea before turning it into an implementation proposal.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or opportunity
+      description: Who experiences this problem, and what are they trying to accomplish?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Proposed direction
+      description: Describe the outcome and important tradeoffs without requiring a specific implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and examples
+      description: Share workflows, repositories, or prior art that demonstrate the need.
+  - type: dropdown
+    id: contribution
+    attributes:
+      label: Contribution interest
+      options:
+        - I can help implement or test this
+        - I can provide use cases and feedback
+        - I am sharing the idea for community consideration
+    validations:
+      required: true

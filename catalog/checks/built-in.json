@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "checks": [
+    {
+      "id": "configured-typecheck",
+      "category": "typecheck",
+      "acceptedPackageScripts": ["typecheck", "check"],
+      "required": true
+    },
+    {
+      "id": "configured-tests",
+      "category": "test",
+      "acceptedPackageScripts": ["test"],
+      "required": true
+    },
+    {
+      "id": "configured-python-checks",
+      "category": "lint",
+      "acceptedPackageScripts": ["check", "lint", "typecheck"],
+      "required": true
+    },
+    {
+      "id": "secret-scan",
+      "category": "security",
+      "acceptedPackageScripts": ["secret-scan", "security"],
+      "required": true
+    },
+    {
+      "id": "existing-ci-workflows",
+      "category": "build",
+      "execution": "ci-only",
+      "required": true
+    }
+  ]
+}

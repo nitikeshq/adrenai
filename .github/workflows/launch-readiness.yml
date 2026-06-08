@@ -1,0 +1,41 @@
+name: Launch Readiness
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "README.md"
+      - "docs/**"
+      - ".github/**"
+  push:
+    branches: [main]
+    paths:
+      - "README.md"
+      - "docs/**"
+      - ".github/**"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: launch-readiness-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  documentation-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate documentation links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --verbose
+            --no-progress
+            --exclude-path node_modules
+            --exclude-path dist
+            README.md
+            docs
+            .github
+          fail: true

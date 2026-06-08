@@ -1,0 +1,26 @@
+{
+  "id": "testing/browser-verification",
+  "version": "0.1.0",
+  "type": "testing",
+  "title": "Browser Verification",
+  "description": "Requires browser-level verification for user-facing changes.",
+  "appliesWhen": {
+    "technologies": [
+      "playwright"
+    ],
+    "agents": [
+      "codex",
+      "claude-code"
+    ]
+  },
+  "requires": [
+    "governance/portable-agent-baseline"
+  ],
+  "conflicts": [],
+  "guidance": [
+    "Run relevant browser tests after changing user-facing behavior."
+  ],
+  "checks": [
+    "configured-browser-tests"
+  ]
+}
