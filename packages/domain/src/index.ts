@@ -165,6 +165,7 @@ export interface PackResolution {
 export * from "./checks.js";
 export * from "./policy.js";
 export * from "./selection.js";
+export * from "./session.js";
 export * from "./synthesis.js";
 export * from "./taxonomy.js";
 export * from "./workflow.js";

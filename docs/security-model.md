@@ -71,6 +71,13 @@ allowlisted and shell metacharacters are rejected before execution.
 hashes still match. It blocks unmanaged files, user-modified managed files,
 unsafe paths, invalid manifests, and files changed after preview.
 
+### Isolated session alignment
+
+Active-session guidance is generated only under `.adrenai/sessions/`, rejects
+secret-like state, diagnoses process drift, and produces an approval-required
+teardown plan. It never overwrites user-authored agent instructions. See
+[session alignment and security](session-security.md).
+
 ## Known limitations
 
 - Markdown instruction parsing is diagnostic, not a security sandbox.
