@@ -55,10 +55,10 @@
     "release:check": "corepack pnpm audit --audit-level=high && corepack pnpm secret-scan && corepack pnpm site:validate && corepack pnpm release:tag:test && corepack pnpm prepack && node scripts/validate-release.mjs && node scripts/smoke-test.mjs && node scripts/demo-smoke-test.mjs && node scripts/performance-test.mjs && npm pack --dry-run"
   },
   "devDependencies": {
-    "@types/node": "^22.10.0",
+    "@types/node": "^25.9.2",
     "tsx": "^4.19.0",
     "tsup": "^8.5.0",
-    "typescript": "^5.7.0",
+    "typescript": "^6.0.3",
     "vitest": "^4.1.8"
   },
   "dependencies": {
