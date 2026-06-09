@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.1
+
+- Create a deterministic pack lockfile during first-run `apply --write`.
+- Suppress duplicate diagnostics for intentionally synchronized managed outputs.
+- Enforce repository containment for file reads, including symlink escapes.
+- Bind approved optional-AI requests to the executing provider.
+- Make release publication retry-safe and distribution smoke tests version-aware.
+- Document offline selection, optional AI, portable skills, and renderer boundaries.
+
 ## 1.0.0
 
 - Stable local-first CLI for inspecting repositories and configuring AI coding agents.
