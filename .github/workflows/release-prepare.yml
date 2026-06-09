@@ -46,6 +46,7 @@ jobs:
     if: startsWith(github.ref, 'refs/tags/v')
     needs: prepare
     runs-on: ubuntu-latest
+    environment: npm
     timeout-minutes: 10
     permissions:
       contents: write
@@ -62,6 +63,8 @@ jobs:
           path: artifacts
       - name: Verify release tag
         run: node scripts/verify-release-tag.mjs "${GITHUB_REF_NAME}"
+      - name: Install npm with trusted publishing support
+        run: npm install --global npm@11.16.0
       - name: Publish package with npm trusted publishing
         run: npm publish artifacts/npm/*.tgz --provenance --access public
       - name: Create GitHub release

@@ -21,7 +21,7 @@
 - [ ] Select accurate topics.
 - [ ] Add the maker comment immediately after launch.
 - [ ] Link directly to the repository and current documentation.
-- [ ] State clearly that the release is an open-source public beta.
+- [ ] State clearly which capabilities and installation channels are available.
 - [ ] Avoid feature-roadmap promises with dates.
 
 ## Launch-day operations

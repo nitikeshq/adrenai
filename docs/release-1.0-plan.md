@@ -40,7 +40,7 @@ diagnostics may ship in minor releases.
 - Automatic merging of arbitrary user-authored instructions.
 - Guaranteed agent compliance, security certification, or autonomous delivery.
 - Stable APIs for every internal workspace package.
-- Design, SEO, office-document, or marketing workflows.
+- A hosted editor for design, SEO, office-document, or marketing workflows.
 
 ## Required Evidence
 

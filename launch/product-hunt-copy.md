@@ -35,9 +35,9 @@ It can:
 - Create missing generated files without overwriting existing files.
 - Detect changes to files managed by AdrenAI.
 
-AdrenAI works without an AI provider. Its initial focus is AI-assisted software
-development; broader workflows remain future possibilities, not launch
-features.
+AdrenAI works without an AI provider. Its built-in catalog also provides
+deterministic starting points for design, SEO, mobile, writing, office-document,
+and marketing workflows.
 
 ## First comment summary
 
@@ -46,8 +46,8 @@ AdrenAI exists to answer a practical question:
 > What guidance does this repository actually need, and how do we keep it
 > consistent across AI coding agents?
 
-The current release is an open-source public beta. We are launching now to
-validate the workflow with real repositories and learn which diagnostics,
+The current release is the first stable open-source version. We are launching
+to validate the workflow with real repositories and learn which diagnostics,
 adapters, and guidance packs provide lasting value.
 
 ## Suggested topics

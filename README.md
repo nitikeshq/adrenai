@@ -3,7 +3,7 @@
 [![CI](https://github.com/nitikeshq/adrenai/actions/workflows/ci.yml/badge.svg)](https://github.com/nitikeshq/adrenai/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/adrenai?label=npm)](https://www.npmjs.com/package/adrenai)
 [![License](https://img.shields.io/github/license/nitikeshq/adrenai)](LICENSE)
-[![Public beta](https://img.shields.io/badge/status-public%20beta-a3ff12)](launch/honest-positioning.md)
+[![Status](https://img.shields.io/badge/status-stable-a3ff12)](launch/honest-positioning.md)
 
 AdrenAI inspects a software repository and creates minimal, compatible,
 token-efficient configuration for AI coding agents. Core behavior is local,
@@ -29,7 +29,7 @@ deterministic, and does not require an AI provider.
 
 ## Install
 
-The public beta can be installed from source today:
+AdrenAI can be installed from source today:
 
 ```bash
 git clone https://github.com/nitikeshq/adrenai.git

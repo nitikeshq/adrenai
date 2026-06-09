@@ -24,6 +24,8 @@ a small, compatible set of repository-specific instructions.
 - Preview-first, create-only file generation
 - Existing-instruction diagnostics
 - Managed-file drift detection
+- Deterministic workflow packs for development, design, SEO, mobile, writing,
+  office-document, and marketing use cases
 
 ## What is not available yet
 
@@ -32,8 +34,7 @@ a small, compatible set of repository-specific instructions.
 - Signed community packs or a hosted marketplace
 - Guaranteed compliance or security certification
 - Complete support for every language, framework, and agent
-- A long-term stability guarantee
-- Design, SEO, writing, spreadsheet, or marketing workflows
+- A hosted visual editor for design, writing, spreadsheet, or marketing workflows
 
 ## Claims to avoid
 
@@ -44,7 +45,6 @@ Do not claim that AdrenAI:
 - Replaces testing, review, or engineering judgment.
 - Supports every coding agent.
 - Automatically fixes repository architecture.
-- Has a long-term stability guarantee.
 - Saves a specific amount of time or tokens without measured evidence.
 - Has official endorsement from supported agent vendors.
 

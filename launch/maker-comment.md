@@ -21,9 +21,9 @@ AdrenAI takes a local-first approach:
 The core workflow does not require an AI provider or send repository content to
 an external service.
 
-This is an open-source public beta, not a finished universal skills
-platform. It currently focuses on software repositories and deterministic
-guidance. We are especially interested in feedback from developers using more
+This is a stable open-source release, not a finished universal skills platform.
+It focuses on deterministic guidance and workflows that users can inspect before
+applying. We are especially interested in feedback from developers using more
 than one coding agent:
 
 - Which agent configuration problems repeat across your repositories?
