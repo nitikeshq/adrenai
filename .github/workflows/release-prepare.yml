@@ -66,8 +66,21 @@ jobs:
       - name: Install npm with trusted publishing support
         run: npm install --global npm@11.16.0
       - name: Publish package with npm trusted publishing
-        run: npm publish artifacts/npm/*.tgz --provenance --access public
+        env:
+          VERSION: ${{ github.ref_name }}
+        run: |
+          VERSION="${VERSION#v}"
+          if npm view "adrenai@${VERSION}" version >/dev/null 2>&1; then
+            echo "adrenai@${VERSION} is already published."
+          else
+            npm publish artifacts/npm/*.tgz --provenance --access public
+          fi
       - name: Create GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "${GITHUB_REF_NAME}" artifacts/npm/*.tgz artifacts/homebrew/*.rb --generate-notes --verify-tag
+        run: |
+          if gh release view "${GITHUB_REF_NAME}" >/dev/null 2>&1; then
+            gh release upload "${GITHUB_REF_NAME}" artifacts/npm/*.tgz artifacts/homebrew/*.rb --clobber
+          else
+            gh release create "${GITHUB_REF_NAME}" artifacts/npm/*.tgz artifacts/homebrew/*.rb --generate-notes --verify-tag
+          fi

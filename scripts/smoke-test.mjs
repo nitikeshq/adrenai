@@ -38,7 +38,7 @@ try {
     throw new Error("Smoke default command did not recommend a profile.");
   }
 
-  run(["sync", root, "--write", "--agents=codex,claude-code"]);
+  run(["apply", root, "--write", "--agents=codex,claude-code"]);
   const config = await readFile(join(root, "adrenai.yaml"), "utf8");
   if (!config.includes("claude-code")) {
     throw new Error("Smoke synchronization did not generate requested agent configuration.");

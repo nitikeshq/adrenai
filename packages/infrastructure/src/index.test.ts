@@ -2,7 +2,7 @@ import { mkdir, mkdtemp, readFile, rm, symlink, writeFile } from "node:fs/promis
 import { join } from "node:path";
 import { tmpdir } from "node:os";
 import { afterEach, describe, expect, it } from "vitest";
-import { applyArtifacts, loadWorkflowState, runQualityGatePlans, saveWorkflowState, Sha256ContentHasher } from "./index.js";
+import { applyArtifacts, loadWorkflowState, NodeRepositoryFileSystem, runQualityGatePlans, saveWorkflowState, Sha256ContentHasher } from "./index.js";
 
 const createdDirectories: string[] = [];
 
@@ -96,6 +96,33 @@ describe("Sha256ContentHasher", () => {
 
     expect(hasher.hash("content")).toBe(hasher.hash("content"));
     expect(hasher.hash("content")).not.toBe(hasher.hash("changed"));
+  });
+});
+
+describe("NodeRepositoryFileSystem", () => {
+  it("rejects reads that escape the repository root", async () => {
+    const root = await temporaryRepository();
+    const outside = await temporaryRepository();
+    await writeFile(join(outside, "secret.txt"), "outside\n");
+
+    await expect(
+      new NodeRepositoryFileSystem().readText(root, "../secret.txt"),
+    ).rejects.toThrow("escapes repository root");
+  });
+
+  it("rejects reads through repository symlinks that escape the root", async () => {
+    const root = await temporaryRepository();
+    const outside = await temporaryRepository();
+    await writeFile(join(outside, "secret.txt"), "outside\n");
+    await symlink(
+      outside,
+      join(root, "linked"),
+      process.platform === "win32" ? "junction" : "dir",
+    );
+
+    await expect(
+      new NodeRepositoryFileSystem().readText(root, "linked/secret.txt"),
+    ).rejects.toThrow("outside repository root");
   });
 });
 

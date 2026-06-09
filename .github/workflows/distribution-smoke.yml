@@ -2,6 +2,13 @@ name: Distribution Smoke
 
 on:
   workflow_dispatch:
+    inputs:
+      version:
+        description: Version to verify
+        required: false
+        default: latest
+  release:
+    types: [published]
 
 permissions:
   contents: read
@@ -21,12 +28,12 @@ jobs:
       - name: Verify global npm installation
         working-directory: ${{ runner.temp }}
         run: |
-          npm install --global adrenai@1.0.0
+          npm install --global adrenai@${{ github.event.release.tag_name || inputs.version || 'latest' }}
           adrenai --version
           adrenai --help
       - name: Verify npx execution
         working-directory: ${{ runner.temp }}
-        run: npx --yes adrenai@1.0.0 --version
+        run: npx --yes adrenai@${{ github.event.release.tag_name || inputs.version || 'latest' }} --version
 
   homebrew:
     runs-on: macos-latest

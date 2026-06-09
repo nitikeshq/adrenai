@@ -212,9 +212,7 @@ export async function planSynchronization(
     ]),
   );
   const desired = new Map<string, GeneratedArtifact>();
-  const lockfile = generatePackLockfile(resolution, hasher);
-
-  for (const artifact of [...generatedArtifacts, lockfile]) {
+  for (const artifact of generatedArtifacts) {
     const path = normalizePath(artifact.path);
     if (path === MANIFEST_PATH) {
       continue;
