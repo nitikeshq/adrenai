@@ -1,6 +1,6 @@
 {
   "name": "adrenai",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": false,
   "description": "Repository-aware configuration for AI coding agents.",
   "homepage": "https://nitikeshq.github.io/adrenai/",
