@@ -124,7 +124,13 @@ describe("generatePackLockfile", () => {
 describe("planSynchronization", () => {
   it("previews creation of generated files, lockfile, and ownership manifest", async () => {
     const fileSystem = new MemoryFileSystem();
-    const plan = await planSynchronization(".", [artifact()], resolution(), fileSystem, hasher);
+    const plan = await planSynchronization(
+      ".",
+      [artifact(), generatePackLockfile(resolution(), hasher)],
+      resolution(),
+      fileSystem,
+      hasher,
+    );
 
     expect(plan.canApply).toBe(true);
     expect(plan.actions.map(({ path, kind }) => [path, kind])).toEqual([
@@ -159,7 +165,13 @@ describe("planSynchronization", () => {
 
   it("blocks overwriting an unmanaged existing file", async () => {
     const fileSystem = new MemoryFileSystem({ "AGENTS.md": "user content\n" });
-    const plan = await planSynchronization(".", [artifact()], resolution(), fileSystem, hasher);
+    const plan = await planSynchronization(
+      ".",
+      [artifact(), generatePackLockfile(resolution(), hasher)],
+      resolution(),
+      fileSystem,
+      hasher,
+    );
 
     expect(plan.canApply).toBe(false);
     expect(plan.diagnostics.map(({ id }) => id)).toContain("sync/unmanaged-file-conflict");
@@ -172,7 +184,13 @@ describe("planSynchronization", () => {
       "AGENTS.md": "user changed\n",
       ".adrenai/generated.json": manifestFor([{ path: "AGENTS.md", content: original }]),
     });
-    const plan = await planSynchronization(".", [artifact()], resolution(), fileSystem, hasher);
+    const plan = await planSynchronization(
+      ".",
+      [artifact(), generatePackLockfile(resolution(), hasher)],
+      resolution(),
+      fileSystem,
+      hasher,
+    );
 
     expect(plan.canApply).toBe(false);
     expect(plan.diagnostics.map(({ id }) => id)).toContain("sync/managed-file-drift");
@@ -249,7 +267,13 @@ describe("applySynchronization", () => {
       "AGENTS.md": old,
       ".adrenai/generated.json": manifestFor([{ path: "AGENTS.md", content: old }]),
     });
-    const plan = await planSynchronization(".", [artifact()], resolution(), fileSystem, hasher);
+    const plan = await planSynchronization(
+      ".",
+      [artifact(), generatePackLockfile(resolution(), hasher)],
+      resolution(),
+      fileSystem,
+      hasher,
+    );
     const result = await applySynchronization(plan, fileSystem, hasher);
 
     expect(result.written).toEqual([

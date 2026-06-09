@@ -75,6 +75,29 @@ describe("optional AI provider controls", () => {
     expect(changedConsent.audit.reason).toContain("consent");
   });
 
+  it("does not transmit approved content through a different provider", async () => {
+    const preview = previewAiRequest(descriptor, "summarize", "public content", "offline summary");
+    let executed = false;
+    const result = await executeOptionalAi(
+      {
+        descriptor: { ...descriptor, id: "different-provider" },
+        execute: async () => {
+          executed = true;
+          return "unexpected";
+        },
+      },
+      preview,
+      approveAiRequest(preview, hasher),
+      budget,
+      hasher,
+      () => "offline summary",
+    );
+
+    expect(executed).toBe(false);
+    expect(result.value).toBe("offline summary");
+    expect(result.audit.reason).toContain("differs");
+  });
+
   it("falls back deterministically on budget or provider failure", async () => {
     const preview = previewAiRequest(descriptor, "gap-analysis", "public content", "offline gaps");
     const failing = {

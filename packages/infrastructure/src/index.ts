@@ -77,8 +77,14 @@ export class NodeRepositoryFileSystem implements RepositoryFileSystem {
     return files;
   }
 
-  readText(root: string, relativePath: string): Promise<string> {
-    return readFile(join(root, relativePath), "utf8");
+  async readText(root: string, relativePath: string): Promise<string> {
+    const absoluteRoot = resolve(root);
+    const absolutePath = resolve(absoluteRoot, relativePath);
+    if (isAbsolute(relativePath) || pathEscapes(absoluteRoot, absolutePath)) {
+      throw new Error(`Read path escapes repository root: ${relativePath}`);
+    }
+    await assertRealPathContained(root, absolutePath);
+    return readFile(absolutePath, "utf8");
   }
 
   async writeText(root: string, relativePath: string, content: string): Promise<void> {

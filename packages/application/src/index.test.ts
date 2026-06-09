@@ -358,9 +358,10 @@ describe("managed generation", () => {
       ".claude/skills/adrenai-project-guidance/SKILL.md",
       ".cursor/rules/adrenai.mdc",
       "adrenai.yaml",
+      "adrenai.lock.json",
       ".adrenai/generated.json",
     ]);
-    expect(manifest.artifacts).toHaveLength(3);
+    expect(manifest.artifacts).toHaveLength(4);
     expect(manifest.artifacts[0].contentHash).toMatch(/^[a-f0-9]{64}$/);
   });
 
@@ -564,6 +565,28 @@ describe("instruction analysis", () => {
       "instructions/duplicate-requirements",
       "instructions/conflicting-requirements",
     ]);
+  });
+
+  it("does not report duplicates across intentionally managed native outputs", async () => {
+    const guidance = "- Run tests.\n";
+    const fileSystem = new MemoryFileSystem({
+      "AGENTS.md": guidance,
+      "CLAUDE.md": guidance,
+      ".adrenai/generated.json": JSON.stringify({
+        version: 1,
+        artifacts: [
+          { path: "AGENTS.md", purpose: "guidance", contentHash: "managed" },
+          { path: "CLAUDE.md", purpose: "guidance", contentHash: "managed" },
+        ],
+      }),
+    });
+    const inspection = await inspectRepository("/project", fileSystem);
+
+    const report = await doctorRepository(inspection, fileSystem);
+
+    expect(report.diagnostics.map(({ id }) => id)).not.toContain(
+      "instructions/duplicate-requirements",
+    );
   });
 
   it("reports missing Markdown instructions", async () => {

@@ -129,6 +129,10 @@ export async function executeOptionalAi<T>(
     },
   });
   if (
+    provider.descriptor.id !== preview.providerId ||
+    !provider.descriptor.capabilities.includes(preview.capability)
+  ) return blocked("executing provider differs from approved provider");
+  if (
     !consent?.approved ||
     consent.providerId !== preview.providerId ||
     consent.capability !== preview.capability ||

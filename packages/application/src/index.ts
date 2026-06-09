@@ -418,7 +418,10 @@ export function generateManagedSetup(
     packResolution,
     targets,
   ).find(({ path }) => path === "adrenai.yaml");
-  const managedArtifacts = configArtifact ? [...agentArtifacts, configArtifact] : agentArtifacts;
+  const lockfile = generatePackLockfile(packResolution, hasher);
+  const managedArtifacts = configArtifact
+    ? [...agentArtifacts, configArtifact, lockfile]
+    : [...agentArtifacts, lockfile];
   const manifest: GenerationManifest = {
     version: 1,
     artifacts: managedArtifacts.map(({ path, purpose, content }) => ({
@@ -697,7 +700,10 @@ function requirementEvidence(requirement: InstructionRequirement): Evidence {
   };
 }
 
-function analyzeRequirements(requirements: InstructionRequirement[]): Diagnostic[] {
+function analyzeRequirements(
+  requirements: InstructionRequirement[],
+  managedPaths: Set<string> = new Set(),
+): Diagnostic[] {
   const groups = new Map<string, InstructionRequirement[]>();
   for (const requirement of requirements) {
     const key = `${requirement.scope}\0${requirement.normalized}`;
@@ -715,7 +721,7 @@ function analyzeRequirements(requirements: InstructionRequirement[]): Diagnostic
         message: `Conflicting requirements for "${group[0]?.normalized}" in scope ${group[0]?.scope}.`,
         evidence: group.map(requirementEvidence),
       });
-    } else if (sources.size > 1) {
+    } else if (sources.size > 1 && ![...sources].every((source) => managedPaths.has(source))) {
       diagnostics.push({
         id: "instructions/duplicate-requirements",
         severity: "warning",
@@ -777,12 +783,23 @@ export async function doctorRepository(
     inspection.agents.flatMap(({ configurationFiles }) => configurationFiles),
   );
   const requirements: InstructionRequirement[] = [];
+  const managedPaths = new Set<string>();
   const diagnostics: Diagnostic[] = await diagnoseInspectionHardening({
     root: inspection.root,
     files: [...repositoryFiles],
     fileSystem,
   });
   let instructionCharacters = 0;
+  try {
+    const manifest = JSON.parse(
+      await fileSystem.readText(inspection.root, ".adrenai/generated.json"),
+    ) as GenerationManifest;
+    for (const artifact of manifest.artifacts ?? []) {
+      managedPaths.add(normalizePath(artifact.path));
+    }
+  } catch {
+    // Missing or invalid ownership manifests are diagnosed by validation and drift commands.
+  }
 
   for (const path of paths) {
     try {
@@ -821,7 +838,7 @@ export async function doctorRepository(
     });
   }
 
-  diagnostics.push(...analyzeRequirements(requirements));
+  diagnostics.push(...analyzeRequirements(requirements, managedPaths));
   const estimatedInstructionTokens = Math.ceil(instructionCharacters / 4);
   if (estimatedInstructionTokens > 700) {
     diagnostics.push({
