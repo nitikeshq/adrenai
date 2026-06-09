@@ -3,9 +3,11 @@
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { existsSync } from "node:fs";
+import { cpus, freemem } from "node:os";
 import packageMetadata from "../../../package.json" with { type: "json" };
 import {
   applySynchronization,
+  createOrchestrationPlan,
   doctorRepository,
   detectManagedDrift,
   evaluateQualityGateResults,
@@ -53,6 +55,7 @@ import {
   formatQualityGatePlan,
   formatInspection,
   formatOnboarding,
+  formatOrchestrationPlan,
   formatRecommendation,
   formatSynchronizationPlan,
   formatSynchronizationResult,
@@ -65,6 +68,7 @@ function printHelp(): void {
 
 Usage:
   adrenai onboard [path] [--json]
+  adrenai init [path] [--write] [--agents=codex,claude-code,cursor] [--json]
   adrenai inspect [path] [--json]
   adrenai recommend [path] [--json]
   adrenai apply [path] [--write] [--agents=codex,claude-code,cursor]
@@ -309,6 +313,34 @@ async function main(): Promise<void> {
       resolvedPacks: resolution.resolved.map(({ id }) => id),
     };
     console.log(parsed.json ? JSON.stringify(summary, null, 2) : formatOnboarding(summary));
+    return;
+  }
+  if (command === "init") {
+    const { recommendation, resolution } = await resolveSetup();
+    const plan = createOrchestrationPlan(
+      inspection,
+      recommendation,
+      {
+        availableMemoryMb: Math.floor(freemem() / 1024 / 1024),
+        logicalCpuCount: cpus().length,
+      },
+      parsed.agents,
+    );
+    if (parsed.write) {
+      const artifacts = generateManagedSetup(
+        inspection,
+        recommendation,
+        resolution,
+        hasher,
+        parsed.agents,
+        plan,
+      );
+      const result = await applyArtifacts(root, artifacts);
+      const output = { preview: false, plan, result };
+      console.log(parsed.json ? JSON.stringify(output, null, 2) : `${formatOrchestrationPlan(plan, true)}\n\n${formatApplyResult(result)}`);
+    } else {
+      console.log(parsed.json ? JSON.stringify({ preview: true, plan }, null, 2) : formatOrchestrationPlan(plan));
+    }
     return;
   }
   if (command === "tui") {

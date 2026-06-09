@@ -11,6 +11,7 @@ import type {
 export interface AgentGenerationContext {
   recommendation: RepositoryRecommendation;
   packResolution: PackResolution;
+  extraGuidance?: string[];
 }
 
 export interface AgentAdapter {
@@ -62,7 +63,10 @@ function guidanceDocument(
     "",
     "## Guidance",
     "",
-    ...[...new Set(context.packResolution.resolved.flatMap(({ guidance }) => guidance))].map(
+    ...[...new Set([
+      ...context.packResolution.resolved.flatMap(({ guidance }) => guidance),
+      ...(context.extraGuidance ?? []),
+    ])].map(
       (rule) => `- ${rule}`,
     ),
     "",

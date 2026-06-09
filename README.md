@@ -45,8 +45,10 @@ Install the stable release from npm or Homebrew:
 ```bash
 npm install --global adrenai
 adrenai onboard .
+adrenai init .
 
 npx adrenai onboard .
+npx adrenai init .
 
 brew install nitikeshq/tap/adrenai
 ```
@@ -63,6 +65,7 @@ current directory. It does not modify files or use AI credits.
 
 ```text
 adrenai onboard [path] [--json]
+adrenai init [path] [--write] [--agents=codex,claude-code,cursor] [--json]
 adrenai inspect [path] [--json]
 adrenai recommend [path] [--json]
 adrenai apply [path] [--write] [--agents=codex,claude-code,cursor]

@@ -10,6 +10,7 @@ import type {
   InstructionRequirement,
   Pack,
   PackResolution,
+  OrchestrationPlan,
   ProjectTechnology,
   ProjectSynthesisInput,
   RepositoryInspection,
@@ -24,6 +25,7 @@ import {
 import { parse as parseYaml } from "yaml";
 import { diagnoseInspectionHardening } from "./inspection-hardening.js";
 import { generatePackLockfile } from "./sync.js";
+import { orchestrationStateArtifact } from "./orchestration.js";
 
 export interface RepositoryFileSystem {
   listFiles(root: string): Promise<string[]>;
@@ -162,6 +164,10 @@ async function inspectTechnologies(
         ["vitest", "test-tool", "vitest"],
         ["playwright", "test-tool", "@playwright/test"],
         ["jest", "test-tool", "jest"],
+        ["cms", "framework", "payload"],
+        ["cms", "framework", "@strapi/strapi"],
+        ["cms", "framework", "@sanity/client"],
+        ["cms", "framework", "contentful"],
       ];
       for (const [id, kind, dependency] of dependencyDetectors) {
         if (dependency in dependencies) {
@@ -404,6 +410,7 @@ export function generateManagedSetup(
   packResolution: PackResolution,
   hasher: ContentHasher,
   requestedTargets?: AgentId[],
+  orchestrationPlan?: OrchestrationPlan,
 ): GeneratedArtifact[] {
   const targets =
     requestedTargets && requestedTargets.length > 0
@@ -411,7 +418,11 @@ export function generateManagedSetup(
       : inspection.agents.length === 0
       ? (["generic"] as AgentId[])
       : inspection.agents.map(({ agent }) => agent);
-  const agentArtifacts = generateAgentArtifacts(targets, { recommendation, packResolution });
+  const agentArtifacts = generateAgentArtifacts(targets, {
+    recommendation,
+    packResolution,
+    extraGuidance: orchestrationPlan?.agentGuidance,
+  });
   const configArtifact = generatePortableSetup(
     inspection,
     recommendation,
@@ -419,9 +430,13 @@ export function generateManagedSetup(
     targets,
   ).find(({ path }) => path === "adrenai.yaml");
   const lockfile = generatePackLockfile(packResolution, hasher);
+  const orchestrationArtifact = orchestrationPlan
+    ? orchestrationStateArtifact(orchestrationPlan)
+    : undefined;
   const managedArtifacts = configArtifact
     ? [...agentArtifacts, configArtifact, lockfile]
     : [...agentArtifacts, lockfile];
+  if (orchestrationArtifact) managedArtifacts.push(orchestrationArtifact);
   const manifest: GenerationManifest = {
     version: 1,
     artifacts: managedArtifacts.map(({ path, purpose, content }) => ({
@@ -1071,6 +1086,7 @@ export * from "./checks.js";
 export * from "./ai.js";
 export * from "./api.js";
 export * from "./inspection-hardening.js";
+export * from "./orchestration.js";
 export * from "./platform-catalog.js";
 export * from "./selection.js";
 export * from "./session.js";

@@ -6,6 +6,7 @@ export type CommandName =
   | "doctor"
   | "drift"
   | "inspect"
+  | "init"
   | "onboard"
   | "packs"
   | "strategies"
@@ -51,6 +52,7 @@ const COMMANDS = new Set<CommandName>([
   "doctor",
   "drift",
   "inspect",
+  "init",
   "onboard",
   "packs",
   "strategies",
@@ -158,10 +160,10 @@ export function parseArguments(args: string[]): ParsedArguments {
   if (positional.length > 2) {
     throw new Error(`Unexpected argument: ${positional[2]}`);
   }
-  if (agents && commandValue !== "apply" && commandValue !== "sync") {
-    throw new Error("--agents is only supported by the apply and sync commands.");
+  if (agents && commandValue !== "apply" && commandValue !== "sync" && commandValue !== "init") {
+    throw new Error("--agents is only supported by the apply, init, and sync commands.");
   }
-  if (args.includes("--write") && !["apply", "sync", "session-start", "session-action", "registry-import"].includes(commandValue ?? "")) {
+  if (args.includes("--write") && !["apply", "init", "sync", "session-start", "session-action", "registry-import"].includes(commandValue ?? "")) {
     throw new Error("--write is not supported by this command.");
   }
   if (args.includes("--run") && commandValue !== "check") {
