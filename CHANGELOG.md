@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.0
+
+- Add approval-first `adrenai init` orchestration planning.
+- Detect common headless CMS dependencies and ask only material setup questions.
+- Recommend reviewed external skill sources without automatically installing them.
+- Generate compact plan-mode guidance for selected coding agents.
+- Persist orchestration defaults, execution phases, quality areas, and resource-aware
+  parallel-agent budgets in managed state.
+
 ## 1.0.1
 
 - Create a deterministic pack lockfile during first-run `apply --write`.
