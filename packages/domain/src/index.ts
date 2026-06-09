@@ -166,6 +166,7 @@ export * from "./checks.js";
 export * from "./deliverable.js";
 export * from "./ai.js";
 export * from "./policy.js";
+export * from "./orchestration.js";
 export * from "./selection.js";
 export * from "./session.js";
 export * from "./synthesis.js";

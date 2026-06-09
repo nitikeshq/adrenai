@@ -67,6 +67,17 @@ describe("parseArguments", () => {
     });
   });
 
+  it("accepts approval-first orchestration init options", () => {
+    expect(parseArguments(["init", "./repo", "--agents=codex,claude-code", "--write", "--json"]))
+      .toMatchObject({
+        command: "init",
+        path: "./repo",
+        agents: ["codex", "claude-code"],
+        write: true,
+        json: true,
+      });
+  });
+
   it("accepts the interactive TUI command and JSON snapshot parity", () => {
     expect(parseArguments(["tui", "./repo", "--json"])).toMatchObject({
       command: "tui",

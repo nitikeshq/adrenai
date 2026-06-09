@@ -3,6 +3,12 @@
 AdrenAI's offline core selects and generates guidance; it does not pretend to be
 an AI model or a document renderer.
 
+`adrenai init` also compiles an offline orchestration plan. Repository evidence,
+reviewed built-in guidance, deterministic skill-source ranking, and local
+resource measurements become compact instructions for the selected coding
+agent. The coding agent performs development; AdrenAI defines the approved plan,
+boundaries, quality gates, and parallelism budget.
+
 ## What Offline Onboarding Does
 
 Offline onboarding reads local repository evidence such as technologies,

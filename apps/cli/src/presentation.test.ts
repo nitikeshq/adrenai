@@ -11,6 +11,7 @@ import {
   formatSynchronizationPlan,
   formatInspection,
   formatOnboarding,
+  formatOrchestrationPlan,
   formatRecommendation,
 } from "./presentation.js";
 
@@ -65,6 +66,32 @@ describe("CLI presentation", () => {
     expect(output).toContain("Recommended profile: Portable repository baseline");
     expect(output).toContain("adrenai sync . --write");
     expect(output).toContain("No files written. No AI provider or credits used.");
+  });
+
+  it("formats an approval-first orchestration preview", () => {
+    const output = formatOrchestrationPlan({
+      schemaVersion: 1,
+      root: "/project",
+      profile: "CMS",
+      mode: "offline-first",
+      inspection: { root: "/project", technologies: [], agents: [] },
+      recommendation: { root: "/project", profile: "CMS", recommendations: [] },
+      targetAgents: ["generic"],
+      questions: [],
+      skillSources: [],
+      executionPhases: ["Audit", "Plan", "Build"],
+      qualityAreas: ["security"],
+      parallelism: {
+        recommendedAgents: 2, maximumAgents: 2, availableMemoryMb: 4096,
+        logicalCpuCount: 8, independentTaskCount: 3, providerLimit: 4, costLimit: 2, reasons: [],
+      },
+      agentGuidance: [],
+      diagnostics: [],
+      approvalRequired: true,
+    });
+
+    expect(output).toContain("Parallel agents: recommend 2");
+    expect(output).toContain("No files written");
   });
 
   it("formats a non-writing preview and safe apply result", () => {

@@ -5,6 +5,7 @@ import type {
   GeneratedArtifact,
   RepositoryInspection,
   RepositoryRecommendation,
+  OrchestrationPlan,
 } from "@adrenai/domain";
 
 export interface OnboardingSummary {
@@ -42,6 +43,33 @@ export function formatOnboarding(summary: OnboardingSummary): string {
     "No files written. No AI provider or credits used.",
   ];
   return lines.join("\n");
+}
+
+export function formatOrchestrationPlan(plan: OrchestrationPlan, write = false): string {
+  return [
+    "AdrenAI orchestration plan",
+    `Repository: ${plan.root}`,
+    `Profile: ${plan.profile}`,
+    `Target agents: ${plan.targetAgents.join(", ")}`,
+    "",
+    "Material questions:",
+    ...(plan.questions.length
+      ? plan.questions.map(({ prompt, reason, defaultAnswer }) => `  - ${prompt}\n    Why: ${reason}\n    Default: ${defaultAnswer}`)
+      : ["  None; repository evidence produced clear defaults."]),
+    "",
+    "Recommended skill sources:",
+    ...plan.skillSources.map(({ title, confidence, reason }) => `  - ${title} [${confidence}]\n    ${reason}`),
+    "",
+    `Parallel agents: recommend ${plan.parallelism.recommendedAgents}, maximum ${plan.parallelism.maximumAgents}`,
+    ...plan.parallelism.reasons.map((reason) => `  - ${reason}`),
+    "",
+    "Execution phases:",
+    ...plan.executionPhases.map((phase, index) => `  ${index + 1}. ${phase}`),
+    "",
+    write
+      ? "Approved files were created where missing. Existing user-authored files were preserved."
+      : "No files written. Review this plan, then run `adrenai init . --write` to approve and create missing configuration.",
+  ].join("\n");
 }
 import type { CatalogLoadResult } from "@adrenai/application";
 import type {

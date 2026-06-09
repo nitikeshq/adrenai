@@ -27,6 +27,26 @@ Summarizes detected technologies and agent configurations, recommends a profile
 and guidance packs, and prints exact preview, apply, validation, and quality-gate
 commands. It does not write files or use an AI provider.
 
+### Compile an agent orchestration plan
+
+```bash
+adrenai init .
+adrenai init . --agents=codex,claude-code
+adrenai init . --write
+```
+
+`init` audits the repository and existing agent configuration before producing a
+compact, offline-first execution plan. It recommends material questions, trusted
+skill sources, quality areas, execution phases, and a conservative parallel-agent
+budget based on available memory and logical CPUs. External skills are never
+installed automatically: recommendations require quarantine, compatibility,
+license, security, and user-approval review.
+
+The default command writes nothing. `--write` approves the preview and creates
+only missing native guidance, `adrenai.yaml`, `adrenai.lock.json`,
+`.adrenai/orchestration.json`, and the managed-artifact manifest. Existing
+user-authored files remain preserved.
+
 ## Commands
 
 ### Inspect a repository

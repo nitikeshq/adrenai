@@ -35,7 +35,7 @@ describe("inspectRepository", () => {
       "/project",
       new MemoryFileSystem({
         "package.json": JSON.stringify({
-          dependencies: { next: "1.0.0", react: "1.0.0" },
+          dependencies: { next: "1.0.0", react: "1.0.0", payload: "1.0.0" },
           devDependencies: { typescript: "1.0.0", vitest: "1.0.0" },
         }),
         "AGENTS.md": "",
@@ -55,6 +55,7 @@ describe("inspectRepository", () => {
       "nextjs",
       "react",
       "vitest",
+      "cms",
     ]);
     expect(inspection.agents.map(({ agent }) => agent)).toEqual([
       "codex",
@@ -411,6 +412,47 @@ describe("managed generation", () => {
     expect(artifacts.find(({ path }) => path === "adrenai.yaml")?.content).toContain(
       "    - claude-code",
     );
+  });
+
+  it("generates compact orchestration state and plan-mode agent guidance", async () => {
+    const inspection = await inspectRepository(
+      "/project",
+      new MemoryFileSystem({ "package.json": "{}" }),
+    );
+    const recommendation = recommendRepository(inspection);
+    const resolution = { requested: [], diagnostics: [], resolved: [] };
+    const artifacts = generateManagedSetup(
+      inspection,
+      recommendation,
+      resolution,
+      hasher,
+      ["codex"],
+      {
+        schemaVersion: 1,
+        root: "/project",
+        profile: recommendation.profile,
+        mode: "offline-first",
+        inspection,
+        recommendation,
+        targetAgents: ["codex"],
+        questions: [],
+        skillSources: [],
+        executionPhases: ["Plan", "Build", "Verify"],
+        qualityAreas: ["testing"],
+        parallelism: {
+          recommendedAgents: 1, maximumAgents: 1, availableMemoryMb: 2048,
+          logicalCpuCount: 2, independentTaskCount: 1, providerLimit: 1, costLimit: 1, reasons: [],
+        },
+        agentGuidance: ["Start in plan mode before editing."],
+        diagnostics: [],
+        approvalRequired: true,
+      },
+    );
+
+    expect(artifacts.find(({ path }) => path === "AGENTS.md")?.content).toContain("Start in plan mode");
+    const state = JSON.parse(artifacts.find(({ path }) => path === ".adrenai/orchestration.json")?.content ?? "{}");
+    expect(state.inspection).toBeUndefined();
+    expect(state.executionPhases).toEqual(["Plan", "Build", "Verify"]);
   });
 
   it("rejects unsafe paths in a repository-controlled generation manifest", async () => {
