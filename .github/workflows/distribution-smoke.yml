@@ -1,0 +1,42 @@
+name: Distribution Smoke
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  npm:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+      - name: Verify global npm installation
+        working-directory: ${{ runner.temp }}
+        run: |
+          npm install --global adrenai@1.0.0
+          adrenai --version
+          adrenai --help
+      - name: Verify npx execution
+        working-directory: ${{ runner.temp }}
+        run: npx --yes adrenai@1.0.0 --version
+
+  homebrew:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - name: Install from public tap
+        run: brew install nitikeshq/tap/adrenai
+      - name: Verify Homebrew installation
+        working-directory: ${{ runner.temp }}
+        run: |
+          adrenai --version
+          adrenai --help
+          brew test nitikeshq/tap/adrenai

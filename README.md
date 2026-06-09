@@ -39,7 +39,7 @@ corepack pnpm build
 node dist/main.js onboard .
 ```
 
-After the corresponding `1.0.0` distribution channels are published:
+Install the stable release from npm or Homebrew:
 
 ```bash
 npm install --global adrenai
