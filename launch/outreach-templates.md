@@ -64,8 +64,8 @@ configuration.
 Product Hunt: [link]
 Repository: [link]
 
-Known limitation: it is a public beta and does not yet safely merge existing
-user-authored instructions or execute quality gates.
+Known limitation: it does not automatically merge arbitrary user-authored
+instructions or guarantee that an agent follows generated guidance.
 
 ## Social post
 

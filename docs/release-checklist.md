@@ -7,7 +7,7 @@ Before pushing the first version tag, configure npm trusted publishing for the
 
 - Repository: `nitikeshq/adrenai`
 - Workflow: `.github/workflows/release-prepare.yml`
-- Environment: leave empty unless the workflow is updated to use one
+- Environment: `npm`
 
 No long-lived `NPM_TOKEN` is required. Tagged workflow runs request a short-lived
 identity token, publish with provenance, and attach the prepared tarball to a
@@ -20,9 +20,9 @@ For a release, update `package.json` and `CHANGELOG.md`, merge the reviewed
 change, then push the matching version tag:
 
 ```bash
-node scripts/verify-release-tag.mjs v0.1.0
-git tag v0.1.0
-git push origin v0.1.0
+node scripts/verify-release-tag.mjs v1.0.0
+git tag v1.0.0
+git push origin v1.0.0
 ```
 
 The workflow stops before publishing when the tag and package version differ.
