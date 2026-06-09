@@ -7,12 +7,12 @@ AdrenAI requires Node.js 22 or newer.
 | Channel | Status | Command |
 | --- | --- | --- |
 | Source | Available | `git clone https://github.com/nitikeshq/adrenai.git` |
-| npm global | Planned for `1.0.0` | `npm install --global adrenai` |
-| npm one-off | Planned for `1.0.0` | `npx adrenai onboard .` |
-| Homebrew tap | Planned for `1.0.0` | `brew install nitikeshq/tap/adrenai` |
+| npm global | Available | `npm install --global adrenai` |
+| npm one-off | Available | `npx adrenai onboard .` |
+| Homebrew tap | Available | `brew install nitikeshq/tap/adrenai` |
 
-Do not announce npm or Homebrew availability until clean-install verification
-has passed against the published artifact.
+Public distribution smoke tests verify npm, `npx`, and Homebrew installation
+against the published artifacts.
 
 ## Install From Source
 
@@ -25,8 +25,6 @@ node dist/main.js onboard .
 ```
 
 ## npm
-
-After the package is published:
 
 ```bash
 npm install --global adrenai
@@ -48,8 +46,6 @@ npx adrenai onboard .
 ```
 
 ## Homebrew
-
-After the formula is published to the tap:
 
 ```bash
 brew install nitikeshq/tap/adrenai

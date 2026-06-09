@@ -1,7 +1,7 @@
 # Homebrew Publishing
 
-Homebrew is a planned `1.0.0` distribution channel. Do not mark it available
-until the formula has been published and clean-install verification passes.
+Homebrew is available from the public `nitikeshq/tap` repository. The formula
+installs the exact tarball attached to the corresponding GitHub Release.
 
 ## Tap Setup
 
@@ -47,7 +47,7 @@ adrenai onboard .
 brew uninstall adrenai
 ```
 
-5. Only then change installation documentation from planned to available.
+5. Record the successful distribution smoke workflow in the release issue.
 
 ## Rollback
 

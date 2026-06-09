@@ -18,7 +18,7 @@ for (const text of [
   "npx adrenai",
   "npm install --global adrenai",
   "brew install nitikeshq/tap/adrenai",
-  "Planned for 1.0.0",
+  "Available",
   "Offline-first",
 ]) {
   if (!html.includes(text)) throw new Error(`Launch site is missing required copy: ${text}`);
